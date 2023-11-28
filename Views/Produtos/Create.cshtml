@@ -1,0 +1,22 @@
+@{ Layout = "/Views/Shared/Layout.cshtml"; }
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/produtos/index">Produtos</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Criar Produto</li>
+    </ol>
+</nav>
+
+<form action="/produtos/create" method="POST" enctype="multipart/form-data">
+    <input name="Nome" class="form-control" placeholder="Nome"/>
+    <input name="Descricao" class="form-control" placeholder="Descricao"/>
+    <input name="Preco" class="form-control" placeholder="Preco"/>
+    <input name="ProdQtd" class="form-control" placeholder="Quantidade em Estoque"/>
+    <input type="file" name="image" class="form-control" placeholder="Imagem" />
+
+    <br/>
+    <button class="btn btn-primary">Salvar</button>
+</form>
+
+<br/>
+<a href="/produtos/index" class="btn btn-secondary">Cancelar</a>

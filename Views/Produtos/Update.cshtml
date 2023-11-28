@@ -1,0 +1,23 @@
+@model Produtos
+@{ Layout = "/Views/Shared/Layout.cshtml"; }
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/produtos/index">Produtos</a></li>
+        <li class="breadcrum-item active" aria-current="page">Update</li>
+    </ol>
+</nav>
+
+<form action="/produtos/update/@Model.ProdutoId" method="POST" enctype="multipart/form-data">
+    <input name="Nome" class="form-control" value="@Model.Nome" placeholder="Nome" />
+    <input name="Descricao" class="form-control" value="@Model.Descricao" placeholder="Descricao" />
+    <input name="Preco" class="form-control" value="@Model.Preco" placeholder="Preco" />
+    <input name="ProdQtd" class="form-control" value="@Model.ProdQtd" placeholder="Quantidade em Estoque" />
+    <input type="file" name="image" class="form-control" placeholder="Imagem" />
+
+        <br/>
+        <button class="btn btn-primary">Atualizar</button>
+</form>
+
+<br/>
+<a href="/produtos/index" class="btn btn-secondary">Cancelar</a>

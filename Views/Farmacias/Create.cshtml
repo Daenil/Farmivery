@@ -1,0 +1,45 @@
+@{ Layout = "/Views/Shared/Layout.cshtml"; }
+
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/farmacias/index">farmacias</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Criar farmacia</li>
+    </ol>
+</nav>
+
+<form id="createForm" action="/farmacias/create" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario()">
+    <input name="Nome" class="form-control" placeholder="Nome"/>
+    <input name="Cnpj" id="cnpj" class="form-control" placeholder="CNPJ" maxlength="18" required/>
+
+    <br/>
+    <button class="btn btn-primary">Salvar</button>
+</form>
+
+<br/>
+<a href="/farmacias/index" class="btn btn-secondary">Cancelar</a>
+
+<script>
+    function validarFormulario() {
+        var cnpjInput = document.getElementById('cnpj');
+        var valor = cnpjInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+        if (valor.length !== 14) {
+            alert('Por favor, complete o campo de CNPJ');
+            return false; // Impede o envio do formulário
+        }
+        return true; // Permite o envio do formulário
+    }
+
+    document.getElementById('cnpj').addEventListener('input', function () {
+        var cnpjInput = this;
+        var valor = cnpjInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
+        if (valor.length > 2 && valor.length <= 5) {
+            cnpjInput.value = valor.slice(0, 2) + '.' + valor.slice(2);
+        } else if (valor.length > 5 && valor.length <= 8) {
+            cnpjInput.value = valor.slice(0, 2) + '.' + valor.slice(2, 5) + '.' + valor.slice(5);
+        } else if (valor.length > 8 && valor.length <= 12) {
+            cnpjInput.value = valor.slice(0, 2) + '.' + valor.slice(2, 5) + '.' + valor.slice(5, 8) + '/' + valor.slice(8);
+        } else if (valor.length > 12) {
+            cnpjInput.value = valor.slice(0, 2) + '.' + valor.slice(2, 5) + '.' + valor.slice(5, 8) + '/' + valor.slice(8, 12) + '-' + valor.slice(12);
+        }
+    });
+</script>
