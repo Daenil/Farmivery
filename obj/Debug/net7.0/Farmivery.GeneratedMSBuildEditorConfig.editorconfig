@@ -9,73 +9,73 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Farmivery
 build_property.RootNamespace = Farmivery
-build_property.ProjectDir = C:\Users\rafae\OneDrive\Documentos\GitHub\Farmivery\
+build_property.ProjectDir = C:\Users\danma\Farmivery\
 build_property.RazorLangVersion = 7.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\rafae\OneDrive\Documentos\GitHub\Farmivery
+build_property.MSBuildProjectDirectory = C:\Users\danma\Farmivery
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Clientes/Create.cshtml]
+[C:/Users/danma/Farmivery/Views/Clientes/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Clientes/Index.cshtml]
+[C:/Users/danma/Farmivery/Views/Clientes/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Clientes/Login.cshtml]
+[C:/Users/danma/Farmivery/Views/Clientes/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcTG9naW4uY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Clientes/Update.cshtml]
+[C:/Users/danma/Farmivery/Views/Clientes/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50ZXNcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Farmaceuticos/Create.cshtml]
+[C:/Users/danma/Farmivery/Views/Farmaceuticos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWFjZXV0aWNvc1xDcmVhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Farmaceuticos/Index.cshtml]
+[C:/Users/danma/Farmivery/Views/Farmaceuticos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWFjZXV0aWNvc1xJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Farmaceuticos/Login.cshtml]
+[C:/Users/danma/Farmivery/Views/Farmaceuticos/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWFjZXV0aWNvc1xMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Farmaceuticos/Update.cshtml]
+[C:/Users/danma/Farmivery/Views/Farmaceuticos/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWFjZXV0aWNvc1xVcGRhdGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Farmacias/Create.cshtml]
+[C:/Users/danma/Farmivery/Views/Farmacias/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWFjaWFzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Farmacias/Index.cshtml]
+[C:/Users/danma/Farmivery/Views/Farmacias/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWFjaWFzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Farmacias/Update.cshtml]
+[C:/Users/danma/Farmivery/Views/Farmacias/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWFjaWFzXFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Home/Index.cshtml]
+[C:/Users/danma/Farmivery/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Produtos/Create.cshtml]
+[C:/Users/danma/Farmivery/Views/Produtos/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Produtos/Index.cshtml]
+[C:/Users/danma/Farmivery/Views/Produtos/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Produtos/Update.cshtml]
+[C:/Users/danma/Farmivery/Views/Produtos/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/rafae/OneDrive/Documentos/GitHub/Farmivery/Views/Shared/Layout.cshtml]
+[C:/Users/danma/Farmivery/Views/Shared/Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXExheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
