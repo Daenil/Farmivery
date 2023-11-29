@@ -8,4 +8,5 @@ public class Produtos
     public IFormFile Image { get; set; }
     public string? FilePath { get; set; }
     public string? FileName { get; set; }
+    // public int? qtdComprada { get; set; }
 }

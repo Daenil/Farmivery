@@ -11,10 +11,16 @@ public class ProdutosController : Controller
         _hostingEnvironment = hostingEnvironment;
     }
 
-    public ActionResult Index()
+    public ActionResult IndexF()
     {
         List<Produtos> listap = data.Read();
-        return View(listap);
+        return View("IndexF", listap);
+    }
+
+    public ActionResult IndexC()
+    {
+        List<Produtos> listap = data.Read();
+        return View("IndexC", listap);
     }
 
     public ActionResult Search(IFormCollection form)
@@ -22,7 +28,7 @@ public class ProdutosController : Controller
         string search = form["search"];
 
         List<Produtos> listap = data.Read(search);
-        return View("index", listap);
+        return View("indexF", listap);
     }
 
     [HttpGet]
@@ -48,13 +54,13 @@ public class ProdutosController : Controller
         }
         data.Create(model);
 
-        return RedirectToAction("Index");
+        return RedirectToAction("IndexF", "Produtos");
     }
 
     public ActionResult Delete(int id)
     {
         data.Delete(id);
-        return RedirectToAction("Index");
+        return RedirectToAction("IndexF");
     }
 
     [HttpGet]
@@ -63,7 +69,7 @@ public class ProdutosController : Controller
         Produtos produtos = data.Read(id);
 
         if (produtos == null)
-            return RedirectToAction("Index");
+            return RedirectToAction("IndexF");
 
         return View(produtos);
     }
@@ -84,7 +90,37 @@ public class ProdutosController : Controller
 
         data.Update(id, model);
 
-        return RedirectToAction("Index");
+        return RedirectToAction("IndexF");
     }
+
+    // [HttpGet]
+    // public ActionResult Comprar(int id)
+    // {
+    //     Produtos produtos = data.Read(id);
+
+    //     if (produtos == null)
+    //         return RedirectToAction("IndexC");
+
+    //     return View(produtos);
+    // }
+
+    // [HttpPost]
+    // public ActionResult Comprar(int id, Produtos model)
+    // {
+    //     if (model.Image != null && model.Image.Length > 0)
+    //     {
+    //         model.FileName = Path.GetFileName(model.Image.FileName);
+    //         model.FilePath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", model.FileName);
+
+    //         using (var stream = new FileStream(model.FilePath!, FileMode.Create))
+    //         {
+    //             model.Image.CopyTo(stream);
+    //         }
+    //     }
+
+    //     data.Update(id, model);
+
+    //     return RedirectToAction("Comprar");
+    // }
 
 }

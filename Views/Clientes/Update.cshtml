@@ -1,34 +1,55 @@
 @model Clientes
 @{ Layout = "/Views/Shared/Layout.cshtml"; }
 
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/clientes/index">Clientes</a></li>
-        <li class="breadcrum-item active" aria-current="page">Update</li>
-    </ol>
-</nav>
+<div class="container mt-4">
+    <form action="/clientes/update/@Model.ClienteId" method="POST">
+        <div class="mb-3">
+            <label for="NomeCliente" class="form-label">Nome:</label>
+            <input type="text" name="NomeCliente" class="form-control" value="@Model.NomeCliente" />
+        </div>
 
-<form action="/clientes/update/@Model.ClienteId" method="POST">
-    <input name="NomeCliente" class="form-control" value="@Model.NomeCliente" placeholder="Nome" />
-    <input name="Email" class="form-control" value="@Model.Email" placeholder="Email" />
-    <input name="Senha" type="password" class="form-control" value="@Model.Senha" placeholder="Senha" />
+        <div class="mb-3">
+            <label for="Email" class="form-label">Email:</label>
+            <input type="email" name="Email" class="form-control" value="@Model.Email" />
+        </div>
 
-    <!-- Adicione a classe 'phone' ao campo de telefone e a máscara correspondente -->
-    <input name="Telefone" class="form-control phone" value="@Model.Telefone" placeholder="Telefone" />
+        <div class="mb-3">
+            <label for="Senha" class="form-label">Senha:</label>
+            <div class="input-group">
+                <input type="password" name="Senha" id="senha" class="form-control" value="@Model.Senha" />
+                <button type="button" class="btn btn-outline-secondary" onclick="toggleSenha()">Mostrar Senha</button>
+            </div>
+        </div>
 
-    <!-- Adicione a classe 'cep' ao campo de CEP e a máscara correspondente -->
-    <input name="Cep" class="form-control cep" value="@Model.Cep" placeholder="CEP" />
+        <div class="mb-3">
+            <label for="Telefone" class="form-label">Telefone:</label>
+            <input type="text" name="Telefone" class="form-control phone" value="@Model.Telefone" />
+        </div>
 
-    <input name="NumeroCasa" class="form-control" value="@Model.NumeroCasa" placeholder="Número da Casa" />
-    <input name="Cidade" class="form-control" value="@Model.Cidade" placeholder="Cidade" />
-    <input name="Estado" class="form-control" value="@Model.Estado" placeholder="Estado" />
+        <div class="mb-3">
+            <label for="Cep" class="form-label">CEP:</label>
+            <input type="text" name="Cep" class="form-control cep" value="@Model.Cep" />
+        </div>
 
-    <br/>
-    <button class="btn btn-primary">Atualizar</button>
-</form>
+        <div class="mb-3">
+            <label for="NumeroCasa" class="form-label">Número da Casa:</label>
+            <input type="text" name="NumeroCasa" class="form-control" value="@Model.NumeroCasa" />
+        </div>
 
-<br/>
-<a href="/clientes/index" class="btn btn-secondary">Cancelar</a>
+        <div class="mb-3">
+            <label for="Cidade" class="form-label">Cidade:</label>
+            <input type="text" name="Cidade" class="form-control" value="@Model.Cidade" />
+        </div>
+
+        <div class="mb-3">
+            <label for="Estado" class="form-label">Estado:</label>
+            <input type="text" name="Estado" class="form-control" value="@Model.Estado" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <a href="/clientes/index" class="btn btn-secondary ms-2">Cancelar</a>
+    </form>
+</div>
 
 <!-- Adicione o script jQuery Mask Plugin para formatar automaticamente os campos de telefone e CEP -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
@@ -39,4 +60,13 @@
         $('.phone').mask('(00) 00000-0000');
         $('.cep').mask('00000-000');
     });
+
+    function toggleSenha() {
+        var senhaInput = document.getElementById('senha');
+        if (senhaInput.type === 'password') {
+            senhaInput.type = 'text';
+        } else {
+            senhaInput.type = 'password';
+        }
+    }
 </script>

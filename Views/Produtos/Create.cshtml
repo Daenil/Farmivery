@@ -1,22 +1,35 @@
 @{ Layout = "/Views/Shared/Layout.cshtml"; }
 
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/produtos/index">Produtos</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Criar Produto</li>
-    </ol>
-</nav>
+<div class="container mt-4">
+    <h2>Criação de Produtos</h2>
 
-<form action="/produtos/create" method="POST" enctype="multipart/form-data">
-    <input name="Nome" class="form-control" placeholder="Nome"/>
-    <input name="Descricao" class="form-control" placeholder="Descricao"/>
-    <input name="Preco" class="form-control" placeholder="Preco"/>
-    <input name="ProdQtd" class="form-control" placeholder="Quantidade em Estoque"/>
-    <input type="file" name="image" class="form-control" placeholder="Imagem" />
+    <form action="/produtos/create" method="POST" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="Nome" class="form-label">Nome:</label>
+            <input type="text" name="Nome" class="form-control"required />
+        </div>
 
-    <br/>
-    <button class="btn btn-primary">Salvar</button>
-</form>
+        <div class="mb-3">
+            <label for="Descricao" class="form-label">Descrição:</label>
+            <textarea name="Descricao" class="form-control" required></textarea>
+        </div>
 
-<br/>
-<a href="/produtos/index" class="btn btn-secondary">Cancelar</a>
+        <div class="mb-3">
+            <label for="Preco" class="form-label">Preço:</label>
+            <input type="text" name="Preco" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="ProdQtd" class="form-label">Quantidade em Estoque:</label>
+            <input type="number" name="ProdQtd" class="form-control" required />
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Imagem:</label>
+            <input type="file" name="image" class="form-control" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="/produtos/indexf" class="btn btn-secondary ms-2">Cancelar</a>
+    </form>
+</div>

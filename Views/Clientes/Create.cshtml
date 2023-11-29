@@ -1,38 +1,67 @@
 @{ Layout = "/Views/Shared/Layout.cshtml"; }
 
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/clientes/index">Clientes</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Criar Cliente</li>
-    </ol>
-</nav>
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">Criar Cliente</h2>
 
-<form action="/clientes/create" method="POST">
-    <input name="NomeCliente" class="form-control" placeholder="Nome" required />
-    <input name="Email" class="form-control" placeholder="Email" required pattern="[^@@\s]+@@[^@@\s]+" />
-    <input name="Senha" type="password" class="form-control" placeholder="Senha" required/>
+            <form action="/clientes/create" method="POST">
+                <div class="mb-3">
+                    <label for="NomeCliente" class="form-label">Nome:</label>
+                    <input type="text" name="NomeCliente" class="form-control" required />
+                </div>
 
-    <input name="Telefone" class="form-control phone" placeholder="Telefone" required />
+                <div class="mb-3">
+                    <label for="Email" class="form-label">Email:</label>
+                    <input type="email" name="Email" class="form-control" required pattern="[a-z0-9._%+-]+@@[a-z0-9.-]+\.[a-z]{2,}$" />
+                </div>
 
-    <br />
-    Endereço
-    <br />
+                <div class="mb-3">
+                    <label for="Senha" class="form-label">Senha:</label>
+                    <div class="input-group">
+                        <input type="password" name="Senha" id="senha" class="form-control" required />
+                        <button type="button" class="btn btn-outline-secondary" onclick="toggleSenha()">Mostrar Senha</button>
+                    </div>
+                </div>
 
-    <!-- Adicione a classe 'cep' ao campo de CEP e a máscara correspondente -->
-    <input name="Cep" class="form-control cep" placeholder="CEP" required />
+                <div class="mb-3">
+                    <label for="Telefone" class="form-label">Telefone:</label>
+                    <input type="text" name="Telefone" class="form-control phone" required />
+                </div>
 
-    <input name="NumeroCasa" class="form-control" placeholder="Número da Casa" required />
-    <input name="Cidade" class="form-control" placeholder="Cidade" required />
-    <input name="Estado" class="form-control" placeholder="Estado" required />
+                <div class="mb-3">
+                    <h4 class="mb-3">Endereço</h4>
+                </div>
 
-    <br />
-    <button class="btn btn-primary">Salvar</button>
-</form>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label for="Cep" class="form-label">CEP:</label>
+                        <input type="text" name="Cep" class="form-control cep" required />
+                    </div>
 
-<br />
-<a href="/clientes/index" class="btn btn-secondary">Cancelar</a>
+                    <div class="col-md-6">
+                        <label for="NumeroCasa" class="form-label">Número da Casa:</label>
+                        <input type="text" name="NumeroCasa" class="form-control" required />
+                    </div>
+                </div>
 
-<!-- Adicione o script jQuery Mask Plugin para formatar automaticamente o campo de CEP -->
+                <div class="mb-3">
+                    <label for="Cidade" class="form-label">Cidade:</label>
+                    <input type="text" name="Cidade" class="form-control" required />
+                </div>
+
+                <div class="mb-3">
+                    <label for="Estado" class="form-label">Estado:</label>
+                    <input type="text" name="Estado" class="form-control" required />
+                </div>
+
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a href="/home/index" class="btn btn-secondary ms-2">Cancelar</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Adicione o script jQuery Mask Plugin para formatar automaticamente o campo de telefone e CEP -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
@@ -41,4 +70,13 @@
         $('.phone').mask('(00) 00000-0000');
         $('.cep').mask('00000-000');
     });
+
+    function toggleSenha() {
+        var senhaInput = document.getElementById('senha');
+        if (senhaInput.type === 'password') {
+            senhaInput.type = 'text';
+        } else {
+            senhaInput.type = 'password';
+        }
+    }
 </script>

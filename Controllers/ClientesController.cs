@@ -44,6 +44,7 @@ public class ClientesController : Controller
         return RedirectToAction("Index");
     }
 
+    [HttpGet]
      public ActionResult Login()
     {
         return View();
@@ -62,7 +63,7 @@ public class ClientesController : Controller
             ViewBag.Erro = "Usuário ou senha incorretos";
             return View();
         }
-        return RedirectToAction("Index");
+        return RedirectToAction("IndexC", "Produtos");
     }
     [HttpGet]
     public ActionResult Update(int id)

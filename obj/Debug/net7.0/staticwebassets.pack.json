@@ -1,52 +1,56 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\10356_gardenal-100mg-caixa-com-20-comprimidos-p7896070600669_s1_637217820180139833.jpg",
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\10356_gardenal-100mg-caixa-com-20-comprimidos-p7896070600669_s1_637217820180139833.jpg",
       "PackagePath": "staticwebassets\\uploads\\10356_gardenal-100mg-caixa-com-20-comprimidos-p7896070600669_s1_637217820180139833.jpg"
     },
     {
-      "Id": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\41026007597-offset-4932-preview-480x272.jpg",
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\41026007597-offset-4932-preview-480x272.jpg",
       "PackagePath": "staticwebassets\\uploads\\41026007597-offset-4932-preview-480x272.jpg"
     },
     {
-      "Id": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\Screenshot 2023-10-15 230758.png",
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\Screenshot 2023-10-15 230758.png",
       "PackagePath": "staticwebassets\\uploads\\Screenshot 2023-10-15 230758.png"
     },
     {
-      "Id": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\Screenshot 2023-10-15 230849.png",
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\Screenshot 2023-10-15 230849.png",
       "PackagePath": "staticwebassets\\uploads\\Screenshot 2023-10-15 230849.png"
     },
     {
-      "Id": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\cartucho-dipirona-gotas-898-me-removebg-preview.png",
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\cartucho-dipirona-gotas-898-me-removebg-preview.png",
       "PackagePath": "staticwebassets\\uploads\\cartucho-dipirona-gotas-898-me-removebg-preview.png"
     },
     {
-      "Id": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\controlado-tarja-vermelha-generico_10_18.jpg",
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\controlado-tarja-vermelha-generico_10_18.jpg",
       "PackagePath": "staticwebassets\\uploads\\controlado-tarja-vermelha-generico_10_18.jpg"
     },
     {
-      "Id": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\dipirona-monoidratada-solucao-oral-50mg-ml-com-100ml-generico-germed-295.jpg",
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\dipirona-monoidratada-solucao-oral-50mg-ml-com-100ml-generico-germed-295.jpg",
       "PackagePath": "staticwebassets\\uploads\\dipirona-monoidratada-solucao-oral-50mg-ml-com-100ml-generico-germed-295.jpg"
     },
     {
-      "Id": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\download (1).jpg",
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\download (1).jpg",
       "PackagePath": "staticwebassets\\uploads\\download (1).jpg"
     },
     {
-      "Id": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\download (2).jpg",
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\download (2).jpg",
       "PackagePath": "staticwebassets\\uploads\\download (2).jpg"
     },
     {
-      "Id": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\download.jpeg",
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\download.jpeg",
       "PackagePath": "staticwebassets\\uploads\\download.jpeg"
     },
     {
-      "Id": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\download.jpg",
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\download.jpg",
       "PackagePath": "staticwebassets\\uploads\\download.jpg"
     },
     {
-      "Id": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\i450431.jpeg",
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\i450431.jpeg",
       "PackagePath": "staticwebassets\\uploads\\i450431.jpeg"
+    },
+    {
+      "Id": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\moeda_brasil_1_real_2002_mbc_2513_1_6f83e65c9402121141f39d3b4f53067a.webp",
+      "PackagePath": "staticwebassets\\uploads\\moeda_brasil_1_real_2002_mbc_2513_1_6f83e65c9402121141f39d3b4f53067a.webp"
     },
     {
       "Id": "obj\\Debug\\net7.0\\staticwebassets\\msbuild.Farmivery.Microsoft.AspNetCore.StaticWebAssets.props",

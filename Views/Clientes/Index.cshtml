@@ -2,6 +2,17 @@
 
 @{ Layout = "/Views/Shared/Layout.cshtml"; }
 
+    <div class="row">
+        <div class="col-md-6">
+            <a href="/clientes/create" class="btn btn-primary">Criar Cliente</a>
+        </div>
+        <div class="col-md-6 text-end">
+            <a href="/home/index" class="btn btn-primary">Página Inicial</a>
+        </div>
+    </div>
+    
+    <br/>
+
     <form action="/clientes/search" method="POST" class="input-group mb-3">
         <input name="search" class="form-control"/>
         <button class="btn btn-outline-secondary">Pesquisar</button>
@@ -35,6 +46,3 @@
             </tr>
         }
     </table>
-
-    <a href="/clientes/create" class="btn btn-primary">Criar Cliente</a>
-    <a href="/home/index" class="btn btn-primary">Página inicial</a>

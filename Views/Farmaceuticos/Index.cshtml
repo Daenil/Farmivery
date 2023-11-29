@@ -2,6 +2,21 @@
 
 @{ Layout = "/Views/Shared/Layout.cshtml"; }
 
+    <div class="row">
+        <div class="col-md-4 mb-3">
+            <a href="/farmaceuticos/create" class="btn btn-primary btn-block">Criar Farmacêutico</a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="/home/index" class="btn btn-primary btn-block">Página Inicial</a>
+        </div>
+        <div class="col-md-4 mb-3">
+            <a href="/produtos/indexf" class="btn btn-primary btn-block">Produtos</a>
+        </div>
+    </div>
+
+
+    <br/>
+
     <form action="/farmaceuticos/search" method="POST" class="input-group mb-3">
         <input name="search" class="form-control"/>
         <button class="btn btn-outline-secondary">Pesquisar</button>
@@ -35,6 +50,3 @@
             </tr>
         }
     </table>
-
-    <a href="/farmaceuticos/create" class="btn btn-primary">Criar Farmaceutico</a>
-    <a href="/home/index" class="btn btn-primary">Página inicial</a>

@@ -2,6 +2,12 @@
 
 @{ Layout = "/Views/Shared/Layout.cshtml"; }
 
+<div class="col-md-6">
+    <a href="/home/index" class="btn btn-primary">Página Inicial</a>
+</div>
+
+<br/>
+
 <form action="/produtos/search" method="POST" class="input-group mb-3">
     <input name="search" class="form-control" />
     <button class="btn btn-outline-secondary">Pesquisar</button>
@@ -10,7 +16,7 @@
 <div class="row">
     @foreach (var produto in Model)
     {
-        <div class="col-md-3 mb-3">
+        <div class="col-md-4 mb-3">
             <div class="card">
                 <img src="/uploads/@produto.FileName" class="card-img-top" alt="@produto.Nome" style="height: 300px; object-fit: cover;">
                 <div class="card-body">
@@ -18,17 +24,15 @@
                     <p class="card-text">@produto.Descricao</p>
                     <p class="card-text">Preço: @produto.Preco</p>
                     <p class="card-text">Quantidade: @produto.ProdQtd</p>
-                    <a href="/produtos/delete/@produto.ProdutoId" class="btn btn-danger">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
-                            <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z" />
-                        </svg>
+                    <a href="/produtos/comprar/@produto.ProdutoId" class="btn btn-success">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart3" viewBox="0 0 16 16">
+                            <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .49.598l-1 5a.5.5 0 0 1-.465.401l-9.397.472L4.415 11H13a.5.5 0 0 1 0 1H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l.84 4.479 9.144-.459L13.89 4H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                        </svg> 
+                        Comprar
                     </a>
-                    <a href="/produtos/update/@produto.ProdutoId" class="btn btn-info">Atualizar</a>
                 </div>
             </div>
         </div>
     }
 </div>
 
-<a href="/produtos/create" class="btn btn-primary">Criar Produto</a>
-<a href="/home/index" class="btn btn-primary">Página inicial</a>

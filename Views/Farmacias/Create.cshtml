@@ -1,22 +1,20 @@
 @{ Layout = "/Views/Shared/Layout.cshtml"; }
 
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/farmacias/index">farmacias</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Criar farmacia</li>
-    </ol>
-</nav>
+    <form id="createForm" action="/farmacias/create" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario()">
+        <div class="mb-3">
+            <label for="Nome" class="form-label">Nome:</label>
+            <input type="text" name="Nome" class="form-control" />
+        </div>
 
-<form id="createForm" action="/farmacias/create" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario()">
-    <input name="Nome" class="form-control" placeholder="Nome"/>
-    <input name="Cnpj" id="cnpj" class="form-control" placeholder="CNPJ" maxlength="18" required/>
+        <div class="mb-3">
+            <label for="Cnpj" class="form-label">CNPJ:</label>
+            <input type="text" name="Cnpj" id="cnpj" class="form-control" maxlength="18" required />
+        </div>
 
-    <br/>
-    <button class="btn btn-primary">Salvar</button>
-</form>
-
-<br/>
-<a href="/farmacias/index" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        <a href="/farmacias/index" class="btn btn-secondary ms-2">Cancelar</a>
+    </form>
+</div>
 
 <script>
     function validarFormulario() {

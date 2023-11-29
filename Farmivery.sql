@@ -59,12 +59,12 @@ create table Clientes
 --Tabela Produtos
 create table Produtos
 (
-	produtoId int not null primary key identity,
-	nome varchar(50) not null,
-	descricao varchar(50) not null,
-	preco decimal(10,2) not null,
-	prod_qtd int not null,
-	imagem varchar(255) not null
+	produtoId		int				not null	primary key		identity,
+	nome			varchar(50)		not null,
+	descricao		varchar(50)		not null,
+	preco			decimal(10,2)	not null,
+	prod_qtd		int				not null,
+	imagem			varchar(255)	not null,
 )
 
 --Tabela Pedidos
