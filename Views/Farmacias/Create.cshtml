@@ -1,43 +1,87 @@
-@{ Layout = "/Views/Shared/Layout.cshtml"; }
+@{ Layout = "/Views/Shared/LayoutC.cshtml"; }
 
-    <form id="createForm" action="/farmacias/create" method="POST" enctype="multipart/form-data" onsubmit="return validarFormulario()">
-        <div class="mb-3">
-            <label for="Nome" class="form-label">Nome:</label>
-            <input type="text" name="Nome" class="form-control" />
-        </div>
+<div class="card">
+    <div class="card-body">
+        <h2 class="card-title">Criar Farmacia</h2>
 
-        <div class="mb-3">
-            <label for="Cnpj" class="form-label">CNPJ:</label>
-            <input type="text" name="Cnpj" id="cnpj" class="form-control" maxlength="18" required />
-        </div>
+        <form action="/farmacias/create" method="POST">
+            <div class="mb-3">
+                <label for="Nome" class="form-label">Nome:</label>
+                <input type="text" name="Nome" class="form-control" required />
+            </div>
 
-        <button type="submit" class="btn btn-primary">Salvar</button>
-        <a href="/farmacias/index" class="btn btn-secondary ms-2">Cancelar</a>
-    </form>
+            <div class="mb-3">
+                <label for="Email" class="form-label">Email:</label>
+                <input type="email" name="Email" class="form-control" required pattern="[a-z0-9._%+-]+@@[a-z0-9.-]+\.[a-z]{2,}$" />
+            </div>
+
+            <div class="mb-3">
+                <label for="Senha" class="form-label">Senha:</label>
+                <div class="input-group">
+                    <input type="password" id="senha" name="Senha" class="form-control" required />
+                    <button type="button" class="btn btn-outline-secondary" onclick="toggleSenha()">Mostrar Senha</button>
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="Cnpj" class="form-label">CNPJ:</label>
+                <input type="text" name="Cnpj" class="form-control cnpj" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="Telefone" class="form-label">Telefone:</label>
+                <input type="text" name="Telefone" class="form-control phone" required /> 
+            </div>
+
+            <div class="mb-3">
+                <h4 class="mb-3">Endereço</h4>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="Cep" class="form-label">CEP:</label>
+                    <input type="text" name="Cep" class="form-control cep" required />
+                </div>
+
+                <div class="col-md-6">
+                    <label for="NumeroRua" class="form-label">Número da Rua:</label>
+                    <input type="text" name="NumeroRua" class="form-control" required />
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="Cidade" class="form-label">Cidade:</label>
+                <input type="text" name="Cidade" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+                <label for="Estado" class="form-label">Estado:</label>
+                <input type="text" name="Estado" class="form-control" required />
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="/home/index" class="btn btn-secondary ms-2">Cancelar</a>
+        </form>
+    </div>
 </div>
 
-<script>
-    function validarFormulario() {
-        var cnpjInput = document.getElementById('cnpj');
-        var valor = cnpjInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-        if (valor.length !== 14) {
-            alert('Por favor, complete o campo de CNPJ');
-            return false; // Impede o envio do formulário
-        }
-        return true; // Permite o envio do formulário
-    }
+<!-- Adicione o script jQuery Mask Plugin para formatar automaticamente os campos de telefone, CEP e CNPJ -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
-    document.getElementById('cnpj').addEventListener('input', function () {
-        var cnpjInput = this;
-        var valor = cnpjInput.value.replace(/\D/g, ''); // Remove caracteres não numéricos
-        if (valor.length > 2 && valor.length <= 5) {
-            cnpjInput.value = valor.slice(0, 2) + '.' + valor.slice(2);
-        } else if (valor.length > 5 && valor.length <= 8) {
-            cnpjInput.value = valor.slice(0, 2) + '.' + valor.slice(2, 5) + '.' + valor.slice(5);
-        } else if (valor.length > 8 && valor.length <= 12) {
-            cnpjInput.value = valor.slice(0, 2) + '.' + valor.slice(2, 5) + '.' + valor.slice(5, 8) + '/' + valor.slice(8);
-        } else if (valor.length > 12) {
-            cnpjInput.value = valor.slice(0, 2) + '.' + valor.slice(2, 5) + '.' + valor.slice(5, 8) + '/' + valor.slice(8, 12) + '-' + valor.slice(12);
-        }
+<script>
+    $(document).ready(function () {
+        $('.phone').mask('(00) 00000-0000');
+        $('.cep').mask('00000-000');
+        $('.cnpj').mask('00.000.000/0000-00');
     });
+
+    function toggleSenha() {
+        var senhaInput = document.getElementById('senha');
+        if (senhaInput.type === 'password') {
+            senhaInput.type = 'text';
+        } else {
+            senhaInput.type = 'password';
+        }
+    }
 </script>

@@ -8,54 +8,13 @@ public class FarmaceuticosSql : Database, IFarmaceuticosData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "INSERT INTO Farmaceuticos VALUES (@nome, @email, @senha, @telefone, @cep, @numerocasa, @cidade, @estado)";
+        cmd.CommandText = "INSERT INTO Farmaceuticos VALUES (@nome, @telefone)";
 
         cmd.Parameters.AddWithValue("@nome", farmaceuticos.NomeFarmaceutico);
-        cmd.Parameters.AddWithValue("@email", farmaceuticos.Email);
-        cmd.Parameters.AddWithValue("@senha", farmaceuticos.Senha);
         cmd.Parameters.AddWithValue("@telefone", farmaceuticos.Telefone);
-        cmd.Parameters.AddWithValue("@cep", farmaceuticos.Cep);
-        cmd.Parameters.AddWithValue("@numerocasa", farmaceuticos.NumeroCasa);
-        cmd.Parameters.AddWithValue("@cidade", farmaceuticos.Cidade);
-        cmd.Parameters.AddWithValue("@estado", farmaceuticos.Estado);
 
         cmd.ExecuteNonQuery();
     }
-public List<Farmaceuticos> Login(string Email, string Senha)
-{
-    SqlCommand cmd = new SqlCommand();
-    cmd.Connection = connection;
-    cmd.CommandText = "select Farmaceuticos.farmaceuticoId, Farmaceuticos.email, Farmaceuticos.senha from Farmaceuticos";
-
-    SqlDataReader reader = cmd.ExecuteReader();
-
-    List<Farmaceuticos> listaF = new();
-
-    while (reader.Read())
-    {
-        Farmaceuticos farmaceuticos = new Farmaceuticos();
-        farmaceuticos.FarmaceuticosId = reader.GetInt32(0);
-        farmaceuticos.Email = reader.GetString(1);
-        farmaceuticos.Senha = reader.GetString(2);
-
-        listaF.Add(farmaceuticos);
-    }
-
-    if (listaF.Count == 0)
-    {
-        return null;
-    }
-
-    Farmaceuticos farmaceuticoAutenticado = listaF.FirstOrDefault(f => f.Email == Email && f.Senha == Senha);
-
-    if (farmaceuticoAutenticado == null)
-    {
-        return null;
-    }
-
-    return listaF;
-}
-
 
     public void Delete(int id)
     {
@@ -83,14 +42,7 @@ public List<Farmaceuticos> Login(string Email, string Senha)
             Farmaceuticos farmaceuticos = new Farmaceuticos();
             farmaceuticos.FarmaceuticosId = reader.GetInt32(0);
             farmaceuticos.NomeFarmaceutico = reader.GetString(1);
-            farmaceuticos.Email = reader.GetString(2);
-            farmaceuticos.Senha = reader.GetString(3);
-            farmaceuticos.Telefone = reader.GetString(4);
-            farmaceuticos.Cep = reader.GetString(5);
-            farmaceuticos.NumeroCasa = reader.GetInt32(6);
-            farmaceuticos.Cidade = reader.GetString(7);
-            farmaceuticos.Estado = reader.GetString(8);
-            
+            farmaceuticos.Telefone = reader.GetString(2);            
 
             lista.Add(farmaceuticos);
         }
@@ -114,13 +66,7 @@ public List<Farmaceuticos> Login(string Email, string Senha)
             Farmaceuticos farmaceuticos = new Farmaceuticos();
             farmaceuticos.FarmaceuticosId = reader.GetInt32(0);
             farmaceuticos.NomeFarmaceutico = reader.GetString(1);
-            farmaceuticos.Email = reader.GetString(2);
-            farmaceuticos.Senha = reader.GetString(3);
-            farmaceuticos.Telefone = reader.GetString(4);
-            farmaceuticos.Cep = reader.GetString(5);
-            farmaceuticos.NumeroCasa = reader.GetInt32(6);
-            farmaceuticos.Cidade = reader.GetString(7);
-            farmaceuticos.Estado = reader.GetString(8);
+            farmaceuticos.Telefone = reader.GetString(2);
 
             lista.Add(farmaceuticos);
         }
@@ -142,13 +88,7 @@ public List<Farmaceuticos> Login(string Email, string Senha)
             Farmaceuticos farmaceuticos = new Farmaceuticos();
             farmaceuticos.FarmaceuticosId = reader.GetInt32(0);
             farmaceuticos.NomeFarmaceutico = reader.GetString(1);
-            farmaceuticos.Email = reader.GetString(2);
-            farmaceuticos.Senha = reader.GetString(3);
-            farmaceuticos.Telefone = reader.GetString(4);
-            farmaceuticos.Cep = reader.GetString(5);
-            farmaceuticos.NumeroCasa = reader.GetInt32(6);
-            farmaceuticos.Cidade = reader.GetString(7);
-            farmaceuticos.Estado = reader.GetString(8);
+            farmaceuticos.Telefone = reader.GetString(2);
 
             return farmaceuticos;
         }
@@ -162,23 +102,11 @@ public List<Farmaceuticos> Login(string Email, string Senha)
         cmd.Connection = connection;
         cmd.CommandText = @"UPDATE Farmaceuticos
                             SET nomeFarmaceutico = @nome,
-                            email = @email,
-                            senha = @senha,
-                            telefone = @telefone,
-                            cep = @cep,
-                            numeroCasa = @numerocasa,
-                            cidade = @cidade,
-                            estado = @estado
+                            telefone = @telefone
                             WHERE farmaceuticoId = @id";
 
         cmd.Parameters.AddWithValue("@nome", farmaceuticos.NomeFarmaceutico);
-        cmd.Parameters.AddWithValue("@email", farmaceuticos.Email);
-        cmd.Parameters.AddWithValue("@senha", farmaceuticos.Senha);
         cmd.Parameters.AddWithValue("@telefone", farmaceuticos.Telefone);
-        cmd.Parameters.AddWithValue("@cep", farmaceuticos.Cep);
-        cmd.Parameters.AddWithValue("@numerocasa", farmaceuticos.NumeroCasa);
-        cmd.Parameters.AddWithValue("@cidade", farmaceuticos.Cidade);
-        cmd.Parameters.AddWithValue("@estado", farmaceuticos.Estado);
         cmd.Parameters.AddWithValue("@id", id);
 
         cmd.ExecuteNonQuery();

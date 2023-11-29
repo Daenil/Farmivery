@@ -8,10 +8,17 @@ public class FarmaciasSql : Database, IFarmaciasData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "INSERT INTO Farmacias VALUES (@nome, @cnpj)";
+        cmd.CommandText = "INSERT INTO Farmacias VALUES (@email, @senha, @nome, @cnpj, @cep, @numero, @cidade, @estado, @telefone)";
 
+        cmd.Parameters.AddWithValue("@email", farmacias.Email);
+        cmd.Parameters.AddWithValue("@senha", farmacias.Senha);
         cmd.Parameters.AddWithValue("@nome", farmacias.Nome);
         cmd.Parameters.AddWithValue("@cnpj", farmacias.Cnpj);
+        cmd.Parameters.AddWithValue("@cep", farmacias.Cep);
+        cmd.Parameters.AddWithValue("@numero", farmacias.NumeroRua);
+        cmd.Parameters.AddWithValue("@cidade", farmacias.Cidade);
+        cmd.Parameters.AddWithValue("@estado", farmacias.Estado);
+        cmd.Parameters.AddWithValue("@telefone", farmacias.Telefone);
 
         cmd.ExecuteNonQuery();
     }
@@ -41,8 +48,15 @@ public class FarmaciasSql : Database, IFarmaciasData
         {
             Farmacias farmacias = new Farmacias();
             farmacias.FarmaciaId = reader.GetInt32(0);
-            farmacias.Nome = reader.GetString(1);
-            farmacias.Cnpj = reader.GetString(2);
+            farmacias.Email = reader.GetString(1);
+            farmacias.Senha = reader.GetString(2);
+            farmacias.Nome = reader.GetString(3);
+            farmacias.Cnpj = reader.GetString(4);
+            farmacias.Cep = reader.GetString(5);
+            farmacias.NumeroRua = reader.GetInt32(6);
+            farmacias.Cidade = reader.GetString(7);
+            farmacias.Estado = reader.GetString(8);
+            farmacias.Telefone = reader.GetString(9);
 
             lista.Add(farmacias);
         }
@@ -65,8 +79,15 @@ public class FarmaciasSql : Database, IFarmaciasData
         {
             Farmacias farmacias = new Farmacias();
             farmacias.FarmaciaId = reader.GetInt32(0);
-            farmacias.Nome = reader.GetString(1);
-            farmacias.Cnpj = reader.GetString(2);
+            farmacias.Email = reader.GetString(1);
+            farmacias.Senha = reader.GetString(2);
+            farmacias.Nome = reader.GetString(3);
+            farmacias.Cnpj = reader.GetString(4);
+            farmacias.Cep = reader.GetString(5);
+            farmacias.NumeroRua = reader.GetInt32(6);
+            farmacias.Cidade = reader.GetString(7);
+            farmacias.Estado = reader.GetString(8);
+            farmacias.Telefone = reader.GetString(9);
 
             lista.Add(farmacias);
         }
@@ -87,8 +108,15 @@ public class FarmaciasSql : Database, IFarmaciasData
         {
             Farmacias farmacias = new Farmacias();
             farmacias.FarmaciaId = reader.GetInt32(0);
-            farmacias.Nome = reader.GetString(1);
-            farmacias.Cnpj = reader.GetString(2);
+            farmacias.Email = reader.GetString(1);
+            farmacias.Senha = reader.GetString(2);
+            farmacias.Nome = reader.GetString(3);
+            farmacias.Cnpj = reader.GetString(4);
+            farmacias.Cep = reader.GetString(5);
+            farmacias.NumeroRua = reader.GetInt32(6);
+            farmacias.Cidade = reader.GetString(7);
+            farmacias.Estado = reader.GetString(8);
+            farmacias.Telefone = reader.GetString(9);
 
             return farmacias;
         }
@@ -96,17 +124,64 @@ public class FarmaciasSql : Database, IFarmaciasData
         return null;
     }
 
+    public List<Farmacias> Login(string Email, string Senha)
+    {
+        SqlCommand cmd = new SqlCommand();
+        cmd.Connection = connection;
+        cmd.CommandText = "select Farmacias.farmaciaId, Farmacias.email, senha from Farmacias";
+
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        List<Farmacias> listaF = new();
+
+        while (reader.Read())
+        {
+            Farmacias farmacias = new Farmacias();
+            farmacias.FarmaciaId = reader.GetInt32(0);
+            farmacias.Email = reader.GetString(1);
+            farmacias.Senha = reader.GetString(2);
+
+            listaF.Add(farmacias);
+        }
+
+        if (listaF.Count == 0)
+        {
+            return null;
+        }
+
+        Farmacias farmaciaAutenticada = listaF.FirstOrDefault(f => f.Email == Email && f.Senha == Senha);
+
+        if (farmaciaAutenticada == null)
+        {
+            return null;
+        }
+
+        return listaF;
+    }
+
     public void Update(int id, Farmacias farmacias)
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
         cmd.CommandText = @"UPDATE Farmacias
-                            SET Nome = @nome,
-                            Cnpj = @cnpj
+                            SET email = @email,
+                            senha = @senha,
+                            Nome = @nome,
+                            Cnpj = @cnpj,
+                            cep = @cep,
+                            numeroRua = @numero,
+                            cidade = @cidade,
+                            estado = @estado
                             WHERE FarmaciaId = @id";
 
+        cmd.Parameters.AddWithValue("@email", farmacias.Email);
+        cmd.Parameters.AddWithValue("@senha", farmacias.Senha);
         cmd.Parameters.AddWithValue("@nome", farmacias.Nome);
         cmd.Parameters.AddWithValue("@cnpj", farmacias.Cnpj);
+        cmd.Parameters.AddWithValue("@cep", farmacias.Cep);
+        cmd.Parameters.AddWithValue("@numero", farmacias.NumeroRua);
+        cmd.Parameters.AddWithValue("@cidade", farmacias.Cidade);
+        cmd.Parameters.AddWithValue("@estado", farmacias.Estado);
         cmd.Parameters.AddWithValue("@id", id);
 
         cmd.ExecuteNonQuery();

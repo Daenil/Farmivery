@@ -1,17 +1,17 @@
 using Microsoft.AspNetCore.Mvc;
 
-public class FarmaceuticosController : Controller
+public class EntregadoresController : Controller
 {
-    private IFarmaceuticosData data;
+    private IEntregadoresData data;
 
-    public FarmaceuticosController(IFarmaceuticosData data, IWebHostEnvironment hostingEnvironment)
+    public EntregadoresController(IEntregadoresData data, IWebHostEnvironment hostingEnvironment)
     {
         this.data = data;
     } 
 
     public ActionResult Index()
     {
-        List<Farmaceuticos> lista = data.Read();
+        List<Entregadores> lista = data.Read();
         return View(lista);
     }
 
@@ -19,21 +19,21 @@ public class FarmaceuticosController : Controller
     {
         string search = form["search"];
 
-        List<Farmaceuticos> lista = data.Read(search);
+        List<Entregadores> lista = data.Read(search);
         return View("index", lista);
     }
 
     [HttpGet]
     public ActionResult Create()
     {
-        ViewBag.Farmaceuticos = data.Read();
+        ViewBag.Entregadores = data.Read();
         return View();
     }
 
     [HttpPost]
-    public ActionResult Create(Farmaceuticos farmaceuticos)
+    public ActionResult Create(Entregadores entregadores)
     {
-        data.Create(farmaceuticos);
+        data.Create(entregadores);
         return RedirectToAction("Index");
     }
 
@@ -46,18 +46,18 @@ public class FarmaceuticosController : Controller
     [HttpGet]
     public ActionResult Update(int id)
     {
-        Farmaceuticos farmaceuticos = data.Read(id);
+        Entregadores entregadores = data.Read(id);
 
-        if (farmaceuticos == null)
+        if (entregadores == null)
             return RedirectToAction("Index");
 
-        return View(farmaceuticos);
+        return View(entregadores);
     }
 
     [HttpPost]
-    public ActionResult Update(int id, Farmaceuticos farmaceuticos)
+    public ActionResult Update(int id, Entregadores entregadores)
     {
-        data.Update(id, farmaceuticos);
+        data.Update(id, entregadores);
         return RedirectToAction("Index");
     }
 }

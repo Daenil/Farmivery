@@ -1,6 +1,4 @@
-@{
-    Layout = "/Views/Shared/Layout.cshtml";
-}
+@{Layout = "/Views/Shared/LayoutC.cshtml";}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +14,13 @@
 
     <div class="d-grid gap-3">
         <form action="/farmacias/index">
-            <button class="btn btn-primary" type="submit">Nossas farmácias</button>
+            <button class="btn btn-primary" type="submit">Farmacia index</button>
         </form>
-        <form action="/produtos/indexf">
+        <form action="/produtos/indexc">
             <button class="btn btn-primary" type="submit">Produtos próximos</button>
         </form>
-        <form action="/farmaceuticos/Login">
-            <button class="btn btn-primary" type="submit">Farmaceuticos</button>
+        <form action="/farmacias/Login">
+            <button class="btn btn-primary" type="submit">Farmacias</button>
         </form>
         <form action="/clientes/Login">
             <button class="btn btn-primary" type="submit">Clientes</button>

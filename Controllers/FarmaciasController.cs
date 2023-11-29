@@ -34,6 +34,28 @@ public class FarmaciasController : Controller
     public ActionResult Create(Farmacias farmacias)
     {
         data.Create(farmacias);
+        return RedirectToAction("Login");
+    }
+
+    [HttpGet]
+    public ActionResult Login()
+    {
+        return View();
+    }
+
+    [HttpPost]
+     public ActionResult Login(IFormCollection form)
+    {
+        string? Email = form["Email"];
+        string? Senha = form["Senha"];
+
+        List<Farmacias> farmacias  = data.Login(Email!, Senha!);
+
+        if(farmacias == null)
+        {
+            ViewBag.Erro = "Usuário ou senha incorretos";
+            return View();
+        }
         return RedirectToAction("Index");
     }
 

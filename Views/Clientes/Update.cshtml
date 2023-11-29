@@ -1,5 +1,5 @@
 @model Clientes
-@{ Layout = "/Views/Shared/Layout.cshtml"; }
+@{ Layout = "/Views/Shared/LayoutF.cshtml"; }
 
 <div class="container mt-4">
     <form action="/clientes/update/@Model.ClienteId" method="POST">
@@ -51,7 +51,6 @@
     </form>
 </div>
 
-<!-- Adicione o script jQuery Mask Plugin para formatar automaticamente os campos de telefone e CEP -->
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 

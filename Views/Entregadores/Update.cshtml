@@ -1,11 +1,11 @@
-@model Farmaceuticos
+@model Entregadores
 @{ Layout = "/Views/Shared/LayoutF.cshtml"; }
 
 <div class="container mt-4">
-    <form action="/farmaceuticos/update/@Model.FarmaceuticosId" method="POST">
+    <form action="/entregadores/update/@Model.EntregadorId" method="POST">
         <div class="mb-3">
-            <label for="NomeFarmaceutico" class="form-label">Nome:</label>
-            <input type="text" name="NomeFarmaceutico" class="form-control" value="@Model.NomeFarmaceutico" />
+            <label for="NomeEntregador" class="form-label">Nome:</label>
+            <input type="text" name="NomeEntregador" class="form-control" value="@Model.NomeEntregador" />
         </div>
 
         <div class="mb-3">
@@ -14,7 +14,7 @@
         </div>
 
         <button type="submit" class="btn btn-primary">Atualizar</button>
-        <a href="/farmaceuticos/index" class="btn btn-secondary ms-2">Cancelar</a>
+        <a href="/entregador/index" class="btn btn-secondary ms-2">Cancelar</a>
     </form>
 </div>
 

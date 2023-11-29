@@ -145,17 +145,15 @@ public class ProdutosSql : Database, IProdutosData
         updateCmd.ExecuteNonQuery();
     }
 
-    // public void Comprar(int id, Produtos produtos)
-    // {
-    //     SqlCommand cmd = new SqlCommand();
-    //     cmd.Connection = connection;
-    //     cmd.CommandText = @"UPDATE Produtos
-    //                         SET Prod_qtd = prod_qtd - @qtd,
-    //                         WHERE ProdutoId = @id";
+    public void Comprar(int produtoId, int quantidade)
+    {
+        SqlCommand cmd = new SqlCommand();
+        cmd.Connection = connection;
+        cmd.CommandText = "exec sp_baixarEstoque @idProduto, @qtdVendida";
 
-    //     cmd.Parameters.AddWithValue("@qtd", produtos.qtdComprada);
-    //     cmd.Parameters.AddWithValue("@id", id);
+        cmd.Parameters.AddWithValue("@qtdVendida", quantidade);
+        cmd.Parameters.AddWithValue("@idProduto", produtoId);
 
-    //     cmd.ExecuteNonQuery();
-    // }
+        cmd.ExecuteNonQuery();
+    }
 }

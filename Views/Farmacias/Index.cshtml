@@ -1,6 +1,12 @@
 @model List<Farmacias>
 
-@{ Layout = "/Views/Shared/Layout.cshtml"; }
+@{ Layout = "/Views/Shared/LayoutF.cshtml"; }
+
+    <div class="col-md-12 text-end">
+        <a href="/home/index" class="btn btn-primary">Página Inicial</a>
+    </div>
+
+    <br/>
 
     <form action="/farmacias/search" method="POST" class="input-group mb-3">
         <input name="search" class="form-control"/>
@@ -11,6 +17,11 @@
         <tr>
             <th>Nome</th>
             <th>CNPJ</th>
+            <th>Email</th>
+            <th>Telefone</th>
+            <th>Cidade</th>
+            <th>Estado</th>
+            <th></th>
             <th colspan="2">&nbsp;</th>
         </tr>
 
@@ -19,6 +30,10 @@
             <tr>
                 <td>@farmacias.Nome</td>
                 <td>@farmacias.Cnpj</td>
+                <td>@farmacias.Email</td>
+                <td>@farmacias.Telefone</td>
+                <td>@farmacias.Cidade</td>
+                <td>@farmacias.Estado</td>
                 <td><a href="/farmacias/delete/@farmacias.FarmaciaId">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash-fill" viewBox="0 0 16 16">
                 <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"/></svg></a>
@@ -30,5 +45,5 @@
         }
     </table>
 
-    <a href="/farmacias/create" class="btn btn-primary">Criar Farmacia</a>
-    <a href="/home/index" class="btn btn-primary">Página inicial</a>
+
+

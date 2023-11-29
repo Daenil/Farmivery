@@ -1,5 +1,5 @@
 @{
-    Layout = "/Views/Shared/Layout.cshtml";
+    Layout = "/Views/Shared/LayoutC.cshtml";
 }
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -37,7 +37,7 @@
         <div class="alert alert-danger">@ViewBag.Erro</div>
     }
 
-    <form action='/farmaceuticos/login' method="post">
+    <form action='/farmacias/login' method="post">
         <div class="login-block">
             <div class="mb-3">
                 <label for="Email" class="form-label">E-mail:</label>
@@ -51,7 +51,7 @@
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Entrar</button> 
-            <a href="/farmaceuticos/create" class="btn btn-success">Cadastrar</a>
+            <a href="/farmacias/create" class="btn btn-success">Cadastrar</a>
         </div>
     </form>
 

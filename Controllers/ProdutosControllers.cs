@@ -93,34 +93,34 @@ public class ProdutosController : Controller
         return RedirectToAction("IndexF");
     }
 
-    // [HttpGet]
-    // public ActionResult Comprar(int id)
-    // {
-    //     Produtos produtos = data.Read(id);
+    [HttpGet]
+    public ActionResult Comprar(int id)
+    {
+        Produtos produto = data.Read(id);
 
-    //     if (produtos == null)
-    //         return RedirectToAction("IndexC");
+        if (produto == null)
+            return RedirectToAction("IndexC");
 
-    //     return View(produtos);
-    // }
+        return View(produto);
+    }
 
-    // [HttpPost]
-    // public ActionResult Comprar(int id, Produtos model)
-    // {
-    //     if (model.Image != null && model.Image.Length > 0)
-    //     {
-    //         model.FileName = Path.GetFileName(model.Image.FileName);
-    //         model.FilePath = Path.Combine(_hostingEnvironment.WebRootPath, "uploads", model.FileName);
+    [HttpPost]
+    public ActionResult Comprar(int id, int quantidade)
+    {
+        data.Comprar(id, quantidade);
 
-    //         using (var stream = new FileStream(model.FilePath!, FileMode.Create))
-    //         {
-    //             model.Image.CopyTo(stream);
-    //         }
-    //     }
+        return RedirectToAction("CompraSucedida", new {produtoId = id});
+    }
 
-    //     data.Update(id, model);
+    public ActionResult CompraSucedida(int produtoId)
+    {
+    Produtos produto = data.Read(produtoId);
 
-    //     return RedirectToAction("Comprar");
-    // }
+    if (produto == null)
+    {
+        return RedirectToAction("Index");
+    }
 
+    return View(produto);
+    }
 }

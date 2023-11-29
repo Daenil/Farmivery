@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "SVAyQ0ak79FxFeR3ev+3f/oGemoZi+hI//NjPUDtk68=",
+  "Hash": "ykkqMEckjWrbOkiv65+jpOvPRsquBF+MYDocmtzy33Y=",
   "Source": "Farmivery",
   "BasePath": "_content/Farmivery",
   "Mode": "Default",
@@ -185,6 +185,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\i450431.jpeg"
+    },
+    {
+      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\imagem_2023-11-29_052532558.png",
+      "SourceId": "Farmivery",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "BasePath": "_content/Farmivery",
+      "RelativePath": "uploads/imagem_2023-11-29_052532558.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\imagem_2023-11-29_052532558.png"
     },
     {
       "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\moeda_brasil_1_real_2002_mbc_2513_1_6f83e65c9402121141f39d3b4f53067a.webp",

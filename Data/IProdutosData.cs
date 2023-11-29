@@ -6,6 +6,6 @@ public interface IProdutosData
     public void Create(Produtos produto);
     public void Update(int id, Produtos produto);
     public void Delete(int id);
-    // public void Comprar(int id, Produtos produtos);
+    void Comprar(int produtoId, int quantidade);
 
 }

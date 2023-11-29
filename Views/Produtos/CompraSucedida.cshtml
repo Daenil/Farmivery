@@ -1,0 +1,28 @@
+@model Produtos
+@{ Layout = "/Views/Shared/LayoutC.cshtml"; }
+
+<div class="container mt-4">
+    <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Compra Bem-Sucedida!</h4>
+        <p>Obrigado por sua compra! Seu produto será entregue em breve.</p>
+    </div>
+
+    <div class="card">
+        <img src="~/uploads/@Model.FileName" class="card-img-top" alt="Imagem do Produto">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Nome</h5>
+            <p class="card-text">@Model.Descricao</p>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <p>Seu produto será entregue no endereço fornecido durante o processo de cadastro de usuário. Agradecemos por escolher nossos produtos!</p>
+    </div>
+
+    <div class="text-center mt-4">
+        <a href="/produtos/indexc" class="btn btn-secondary">Voltar para a página inicial</a>
+    </div>
+
+    <br/>
+    
+</div>
