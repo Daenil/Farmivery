@@ -2081,19 +2081,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\danma\\.nuget\\packages\\": {}
+    "C:\\Users\\rafae\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\danma\\Farmivery\\Farmivery.csproj",
+      "projectUniqueName": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\Farmivery.csproj",
       "projectName": "Farmivery",
-      "projectPath": "C:\\Users\\danma\\Farmivery\\Farmivery.csproj",
-      "packagesPath": "C:\\Users\\danma\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\danma\\Farmivery\\obj\\",
+      "projectPath": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\Farmivery.csproj",
+      "packagesPath": "C:\\Users\\rafae\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\danma\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\rafae\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"

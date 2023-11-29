@@ -1,3 +1,4 @@
+using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 
 public class ClientesController : Controller
@@ -34,7 +35,7 @@ public class ClientesController : Controller
     public ActionResult Create(Clientes clientes)
     {
         data.Create(clientes);
-        return RedirectToAction("Index");
+        return RedirectToAction("Login");
     }
 
     public ActionResult Delete(int id)
@@ -43,6 +44,26 @@ public class ClientesController : Controller
         return RedirectToAction("Index");
     }
 
+     public ActionResult Login()
+    {
+        return View();
+    }
+
+    [HttpPost]
+    public ActionResult Login(IFormCollection form)
+    {
+        string? Email = form["Email"];
+        string? Senha = form["Senha"];
+
+        List<Clientes> cliente  = data.Login(Email!, Senha!);
+
+        if(cliente == null)
+        {
+            ViewBag.Erro = "Usuário ou senha incorretos";
+            return View();
+        }
+        return RedirectToAction("Index");
+    }
     [HttpGet]
     public ActionResult Update(int id)
     {

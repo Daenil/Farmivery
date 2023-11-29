@@ -21,6 +21,41 @@ public class FarmaceuticosSql : Database, IFarmaceuticosData
 
         cmd.ExecuteNonQuery();
     }
+public List<Farmaceuticos> Login(string Email, string Senha)
+{
+    SqlCommand cmd = new SqlCommand();
+    cmd.Connection = connection;
+    cmd.CommandText = "select Farmaceuticos.farmaceuticoId, Farmaceuticos.email, Farmaceuticos.senha from Farmaceuticos";
+
+    SqlDataReader reader = cmd.ExecuteReader();
+
+    List<Farmaceuticos> listaF = new();
+
+    while (reader.Read())
+    {
+        Farmaceuticos farmaceuticos = new Farmaceuticos();
+        farmaceuticos.FarmaceuticosId = reader.GetInt32(0);
+        farmaceuticos.Email = reader.GetString(1);
+        farmaceuticos.Senha = reader.GetString(2);
+
+        listaF.Add(farmaceuticos);
+    }
+
+    if (listaF.Count == 0)
+    {
+        return null;
+    }
+
+    Farmaceuticos farmaceuticoAutenticado = listaF.FirstOrDefault(f => f.Email == Email && f.Senha == Senha);
+
+    if (farmaceuticoAutenticado == null)
+    {
+        return null;
+    }
+
+    return listaF;
+}
+
 
     public void Delete(int id)
     {

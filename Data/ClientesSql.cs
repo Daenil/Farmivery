@@ -21,6 +21,41 @@ public class ClientesSql : Database, IClientesData
 
         cmd.ExecuteNonQuery();
     }
+public List<Clientes> Login(string Email, string Senha)
+{
+    SqlCommand cmd = new SqlCommand();
+    cmd.Connection = connection;
+    cmd.CommandText = "select Clientes.clienteId, Clientes.email, senha from Clientes";
+
+    SqlDataReader reader = cmd.ExecuteReader();
+
+    List<Clientes> listaC = new();
+
+    while (reader.Read())
+    {
+        Clientes clientes = new Clientes();
+        clientes.ClienteId = reader.GetInt32(0);
+        clientes.Email = reader.GetString(1);
+        clientes.Senha = reader.GetString(2);
+
+        listaC.Add(clientes);
+    }
+
+    if (listaC.Count == 0)
+    {
+        return null;
+    }
+    // Verifica se há um cliente correspondente ao email e senha fornecidos
+    Clientes clienteAutenticado = listaC.FirstOrDefault(c => c.Email == Email && c.Senha == Senha);
+
+    if (clienteAutenticado == null)
+    {
+        // Se não houver cliente correspondente, então ele retorna Nulo
+        return null;
+    }
+
+    return listaC;
+}
 
     public void Delete(int id)
     {

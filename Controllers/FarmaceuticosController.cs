@@ -34,6 +34,27 @@ public class FarmaceuticosController : Controller
     public ActionResult Create(Farmaceuticos farmaceuticos)
     {
         data.Create(farmaceuticos);
+        return RedirectToAction("Login");
+    }
+
+
+    public ActionResult Login()
+    {
+        return View();
+    }
+    [HttpPost]
+     public ActionResult Login(IFormCollection form)
+    {
+        string? Email = form["Email"];
+        string? Senha = form["Senha"];
+
+        List<Farmaceuticos> farmaceutico  = data.Login(Email!, Senha!);
+
+        if(farmaceutico == null)
+        {
+            ViewBag.Erro = "Usuário ou senha incorretos";
+            return View();
+        }
         return RedirectToAction("Index");
     }
 
