@@ -1,0 +1,37 @@
+@model Clientes
+
+@{
+    Layout = "/Views/Shared/LayoutC.cshtml";
+}
+
+<div class="container mt-4">
+    <h2>Perfil do Cliente</h2>
+
+    <dl class="row mt-4">
+        <dt class="col-sm-3">Nome:</dt>
+        <dd class="col-sm-9">@Model.NomeCliente</dd>
+
+        <dt class="col-sm-3">E-mail:</dt>
+        <dd class="col-sm-9">@Model.Email</dd>
+
+        <dt class="col-sm-3">Telefone:</dt>
+        <dd class="col-sm-9">@Model.Telefone</dd>
+
+        <dt class="col-sm-3">CEP:</dt>
+        <dd class="col-sm-9">@Model.Cep</dd>
+
+        <dt class="col-sm-3">Número da Casa:</dt>
+        <dd class="col-sm-9">@Model.NumeroCasa</dd>
+
+        <dt class="col-sm-3">Cidade:</dt>
+        <dd class="col-sm-9">@Model.Cidade</dd>
+
+        <dt class="col-sm-3">Estado:</dt>
+        <dd class="col-sm-9">@Model.Estado</dd>
+    </dl>
+    <form method="post" action="/Clientes/Logout">
+        <button type="submit" class="btn btn-primary">Logout</button>
+    </form>
+
+
+</div>

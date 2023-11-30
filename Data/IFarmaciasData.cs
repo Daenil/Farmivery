@@ -5,6 +5,6 @@ public interface IFarmaciasData
     public Farmacias Read(int id);
     public void Create(Farmacias farmacias);
     public void Update(int id, Farmacias farmacias);
-    public List<Farmacias> Login(string Email, string Senha);
+    public Farmacias Login(string Email, string Senha);
     public void Delete(int id);
 }

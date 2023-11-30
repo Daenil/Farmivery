@@ -124,39 +124,28 @@ public class FarmaciasSql : Database, IFarmaciasData
         return null;
     }
 
-    public List<Farmacias> Login(string Email, string Senha)
+    public Farmacias Login(string Email, string Senha)
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "select Farmacias.farmaciaId, Farmacias.email, senha from Farmacias";
+        cmd.CommandText = "select farmaciaId, email, senha from Farmacias where email = @email and senha = @senha";
+
+        cmd.Parameters.AddWithValue("@email", Email);
+        cmd.Parameters.AddWithValue("@senha", Senha);
 
         SqlDataReader reader = cmd.ExecuteReader();
 
-        List<Farmacias> listaF = new();
-
-        while (reader.Read())
+        if (reader.Read())
         {
             Farmacias farmacias = new Farmacias();
             farmacias.FarmaciaId = reader.GetInt32(0);
             farmacias.Email = reader.GetString(1);
             farmacias.Senha = reader.GetString(2);
 
-            listaF.Add(farmacias);
+            return farmacias;
         }
 
-        if (listaF.Count == 0)
-        {
-            return null;
-        }
-
-        Farmacias farmaciaAutenticada = listaF.FirstOrDefault(f => f.Email == Email && f.Senha == Senha);
-
-        if (farmaciaAutenticada == null)
-        {
-            return null;
-        }
-
-        return listaF;
+        return null;
     }
 
     public void Update(int id, Farmacias farmacias)

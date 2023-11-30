@@ -45,7 +45,7 @@ public class ClientesController : Controller
     }
 
     [HttpGet]
-     public ActionResult Login()
+    public ActionResult Login()
     {
         return View();
     }
@@ -56,16 +56,28 @@ public class ClientesController : Controller
         string? Email = form["Email"];
         string? Senha = form["Senha"];
 
-        List<Clientes> cliente  = data.Login(Email!, Senha!);
+        Clientes cliente = data.Login(Email!, Senha!);
 
-        if(cliente == null)
+        if (cliente == null)
         {
             ViewBag.Erro = "Usuário ou senha incorretos";
             return View();
         }
+
+        int clienteId = cliente.ClienteId;
+
+        HttpContext.Session.SetInt32("UserId", clienteId);
+
         return RedirectToAction("IndexC", "Produtos");
     }
-    
+
+    [HttpPost]
+    public ActionResult Logout()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToAction("Index", "Home");
+    }
+
     [HttpGet]
     public ActionResult Update(int id)
     {
@@ -81,6 +93,27 @@ public class ClientesController : Controller
     public ActionResult Update(int id, Clientes clientes)
     {
         data.Update(id, clientes);
+
         return RedirectToAction("Index");
+    }
+
+    public ActionResult Perfil()
+    {
+        if (HttpContext.Session.GetInt32("UserId") == null)
+        {
+            return RedirectToAction("Login", "Clientes");
+        }
+
+        int clienteId = HttpContext.Session.GetInt32("UserId") ?? 0;
+
+        Clientes cliente = data.Read(clienteId);
+
+        if (cliente == null)
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Clientes");
+        }
+
+        return View(cliente);
     }
 }

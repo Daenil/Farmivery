@@ -44,19 +44,31 @@ public class FarmaciasController : Controller
     }
 
     [HttpPost]
-     public ActionResult Login(IFormCollection form)
+    public ActionResult Login(IFormCollection form)
     {
         string? Email = form["Email"];
         string? Senha = form["Senha"];
 
-        List<Farmacias> farmacias  = data.Login(Email!, Senha!);
+        Farmacias farmacias = data.Login(Email!, Senha!);
 
-        if(farmacias == null)
+        if (farmacias == null)
         {
             ViewBag.Erro = "Usuário ou senha incorretos";
             return View();
         }
+
+        int farmaciaId = farmacias.FarmaciaId;
+
+        HttpContext.Session.SetInt32("UserId", farmaciaId);
+
         return RedirectToAction("Index");
+    }
+
+    [HttpPost]
+    public ActionResult Logout()
+    {
+        HttpContext.Session.Clear();
+        return RedirectToAction("Index", "Home");
     }
 
     public ActionResult Delete(int id)
@@ -81,5 +93,25 @@ public class FarmaciasController : Controller
     {
         data.Update(id, farmacias);
         return RedirectToAction("Index");
+    }
+
+    public ActionResult Perfil()
+    {
+        if (HttpContext.Session.GetInt32("UserId") == null)
+        {
+            return RedirectToAction("Login", "Farmacias");
+        }
+
+        int farmaciaId = HttpContext.Session.GetInt32("UserId") ?? 0;
+
+        Farmacias farmacia = data.Read(farmaciaId);
+
+        if (farmacia == null)
+        {
+            HttpContext.Session.Clear();
+            return RedirectToAction("Login", "Farmacias");
+        }
+
+        return View(farmacia);
     }
 }
