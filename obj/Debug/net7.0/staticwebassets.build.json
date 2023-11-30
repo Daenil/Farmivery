@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ykkqMEckjWrbOkiv65+jpOvPRsquBF+MYDocmtzy33Y=",
+  "Hash": "mnLHsKLDLelxI6ioPyzH01IPzB5kd/salOf44IXWGUs=",
   "Source": "Farmivery",
   "BasePath": "_content/Farmivery",
   "Mode": "Default",
@@ -202,6 +202,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\imagem_2023-11-29_052532558.png"
+    },
+    {
+      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\imagem_2023-11-29_215714443.png",
+      "SourceId": "Farmivery",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "BasePath": "_content/Farmivery",
+      "RelativePath": "uploads/imagem_2023-11-29_215714443.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\imagem_2023-11-29_215714443.png"
+    },
+    {
+      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\JoelNatal.gif",
+      "SourceId": "Farmivery",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "BasePath": "_content/Farmivery",
+      "RelativePath": "uploads/JoelNatal.gif",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\JoelNatal.gif"
     },
     {
       "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\moeda_brasil_1_real_2002_mbc_2513_1_6f83e65c9402121141f39d3b4f53067a.webp",

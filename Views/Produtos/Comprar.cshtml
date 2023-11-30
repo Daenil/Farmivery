@@ -12,21 +12,26 @@
         </div>
     </div>
 
-    @if (Model.ProdQtd > 0)
-    {
-        <div class="mt-4">
-            <h4>Comprar Produto</h4>
-            <form method="post" asp-action="Comprar" asp-route-id="@Model.ProdutoId">
-                <div class="mb-3">
-                    <label for="quantidade" class="form-label">Quantidade:</label>
-                    <input type="number" name="quantidade" class="form-control" value="1" required />
-                </div>
-                <button type="submit" class="btn btn-primary">Comprar</button>
-            </form>
-        </div>
-    }
-    else
-    {
-        <p class="mt-4 text-danger">Desculpe, este produto está fora de estoque.</p>
-    }
+@if (Model.ProdQtd > 0)
+{
+    <div class="mt-4">
+        <h4>Comprar Produto</h4>
+        <form method="post" asp-action="Comprar" asp-route-id="@Model.ProdutoId">
+            <div class="mb-3">
+                <label for="quantidade" class="form-label">Quantidade:</label>
+                <input type="number" name="quantidade" class="form-control" value="1" required 
+                       max="@Model.ProdQtd" />
+                
+                <span asp-validation-for="quantidade" class="text-danger"></span>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Comprar</button>
+        </form>
+    </div>
+}
+else
+{
+    <p class="mt-4 text-danger">Desculpe, este produto está fora de estoque.</p>
+}
+
 </div>
