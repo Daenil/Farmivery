@@ -6,7 +6,7 @@ go
 
 --use master
 
-select * from Produtos
+--select * from Produtos
 
 ----------------------------------------------------------------------------
 -- Usando database 
@@ -17,15 +17,6 @@ go
 ----------------------------------------------------------------------------
 -- Criando tabelas
 ----------------------------------------------------------------------------
---Tabela Pessoas
-
---Tabela Farmac�utico
-create table Farmaceuticos
-(
-	farmaceuticoId		int				not null	primary key		identity,
-	nomeFarmaceutico	varchar(100)	not null,
-	telefone			varchar(20)		not null,
-)
 
 --Tabela Farmacias
 create table Farmacias
@@ -39,8 +30,29 @@ create table Farmacias
 	numeroRua			int					null,
 	cidade				varchar(100)	not null,
 	estado				varchar(30)		not null,
-	telefone			varchar(20)		not null
+	telefone			varchar(20)		not null	unique
 )
+
+--Tabela Farmac�utico
+create table Farmaceuticos
+(
+	farmaceuticoId		int				not null		identity,
+	idFarmacia			int				not null		references	Farmacias(farmaciaId),
+	nomeFarmaceutico	varchar(100)	not null,
+	telefone			varchar(20)		not null		unique,
+	primary key(farmaceuticoId, idFarmacia)		
+)
+
+--Tabela Entregadores
+create table Entregadores
+(
+	entregadorId	int					not null		identity,
+	idFarmacia		int					not null		references	Farmacias(farmaciaId),
+	nomeEntregador	varchar(100)		not null,
+	telefone		varchar(20)			not null		unique,
+	primary key(entregadorId, idFarmacia)
+)
+
 
 
 --Tabela Clientes
@@ -50,7 +62,7 @@ create table Clientes
 	nomeCliente		varchar(100)	not null,
 	email			varchar(100)	not null,
 	senha			varchar(30)		not null,
-	telefone		varchar(20)		not null,
+	telefone		varchar(20)		not null unique,
 	cep				varchar(10)		not null,
 	numeroCasa		int					null,
 	cidade			varchar(100)	not null,
@@ -78,17 +90,12 @@ create table Pedidos
 	idCli int not null references Clientes(clienteId),
 )
 
---Tabela Entregadores
-create table Entregadores
-(
-	entregadorId	int					not null		primary key		identity,
-	nomeEntregador	varchar(100)		not null,
-	telefone		varchar(20)			not null
-)
 
+----------------------------------------------------------------------
+-- procedures
+----------------------------------------------------------------------
 
-
--- Procedure para Baixar o Estoque sempre que um produto for comprado
+-- 1 -  Procedure para Baixar o Estoque sempre que um produto for comprado
 create Procedure sp_baixarEstoque
 (
 	@idProduto int, @qtdVendida int

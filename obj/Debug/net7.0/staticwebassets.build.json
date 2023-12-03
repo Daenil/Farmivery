@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mnLHsKLDLelxI6ioPyzH01IPzB5kd/salOf44IXWGUs=",
+  "Hash": "Q8VOnJiJa4rdHZXF+s6ZVtafc2fR4a3MN2zXSG2Tq+M=",
   "Source": "Farmivery",
   "BasePath": "_content/Farmivery",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "Farmivery\\wwwroot",
       "Source": "Farmivery",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\10356_gardenal-100mg-caixa-com-20-comprimidos-p7896070600669_s1_637217820180139833.jpg",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\10356_gardenal-100mg-caixa-com-20-comprimidos-p7896070600669_s1_637217820180139833.jpg",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/10356_gardenal-100mg-caixa-com-20-comprimidos-p7896070600669_s1_637217820180139833.jpg",
       "AssetKind": "All",
@@ -34,10 +34,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\10356_gardenal-100mg-caixa-com-20-comprimidos-p7896070600669_s1_637217820180139833.jpg"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\41026007597-offset-4932-preview-480x272.jpg",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\41026007597-offset-4932-preview-480x272.jpg",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/41026007597-offset-4932-preview-480x272.jpg",
       "AssetKind": "All",
@@ -51,10 +51,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\41026007597-offset-4932-preview-480x272.jpg"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\cartucho-dipirona-gotas-898-me-removebg-preview.png",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\cartucho-dipirona-gotas-898-me-removebg-preview.png",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/cartucho-dipirona-gotas-898-me-removebg-preview.png",
       "AssetKind": "All",
@@ -68,10 +68,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\cartucho-dipirona-gotas-898-me-removebg-preview.png"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\controlado-tarja-vermelha-generico_10_18.jpg",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\controlado-tarja-vermelha-generico_10_18.jpg",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/controlado-tarja-vermelha-generico_10_18.jpg",
       "AssetKind": "All",
@@ -85,10 +85,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\controlado-tarja-vermelha-generico_10_18.jpg"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\dipirona-monoidratada-solucao-oral-50mg-ml-com-100ml-generico-germed-295.jpg",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\dipirona-monoidratada-solucao-oral-50mg-ml-com-100ml-generico-germed-295.jpg",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/dipirona-monoidratada-solucao-oral-50mg-ml-com-100ml-generico-germed-295.jpg",
       "AssetKind": "All",
@@ -102,10 +102,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\dipirona-monoidratada-solucao-oral-50mg-ml-com-100ml-generico-germed-295.jpg"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\download (1).jpg",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\download (1).jpg",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/download (1).jpg",
       "AssetKind": "All",
@@ -119,10 +119,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\download (1).jpg"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\download (2).jpg",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\download (2).jpg",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/download (2).jpg",
       "AssetKind": "All",
@@ -136,10 +136,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\download (2).jpg"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\download.jpeg",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\download.jpeg",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/download.jpeg",
       "AssetKind": "All",
@@ -153,10 +153,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\download.jpeg"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\download.jpg",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\download.jpg",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/download.jpg",
       "AssetKind": "All",
@@ -170,10 +170,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\download.jpg"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\i450431.jpeg",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\i450431.jpeg",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/i450431.jpeg",
       "AssetKind": "All",
@@ -187,10 +187,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\i450431.jpeg"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\imagem_2023-11-29_052532558.png",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\imagem_2023-11-29_052532558.png",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/imagem_2023-11-29_052532558.png",
       "AssetKind": "All",
@@ -204,10 +204,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\imagem_2023-11-29_052532558.png"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\imagem_2023-11-29_215714443.png",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\imagem_2023-11-29_215714443.png",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/imagem_2023-11-29_215714443.png",
       "AssetKind": "All",
@@ -221,10 +221,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\imagem_2023-11-29_215714443.png"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\JoelNatal.gif",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\JoelNatal.gif",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/JoelNatal.gif",
       "AssetKind": "All",
@@ -238,10 +238,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\JoelNatal.gif"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\moeda_brasil_1_real_2002_mbc_2513_1_6f83e65c9402121141f39d3b4f53067a.webp",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\moeda_brasil_1_real_2002_mbc_2513_1_6f83e65c9402121141f39d3b4f53067a.webp",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/moeda_brasil_1_real_2002_mbc_2513_1_6f83e65c9402121141f39d3b4f53067a.webp",
       "AssetKind": "All",
@@ -255,10 +255,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\moeda_brasil_1_real_2002_mbc_2513_1_6f83e65c9402121141f39d3b4f53067a.webp"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\Screenshot 2023-10-15 230758.png",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\Screenshot 2023-10-15 230758.png",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/Screenshot 2023-10-15 230758.png",
       "AssetKind": "All",
@@ -272,10 +272,10 @@
       "OriginalItemSpec": "wwwroot\\uploads\\Screenshot 2023-10-15 230758.png"
     },
     {
-      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\Screenshot 2023-10-15 230849.png",
+      "Identity": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\uploads\\Screenshot 2023-10-15 230849.png",
       "SourceId": "Farmivery",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\rafae\\OneDrive\\Documentos\\GitHub\\Farmivery\\wwwroot\\",
       "BasePath": "_content/Farmivery",
       "RelativePath": "uploads/Screenshot 2023-10-15 230849.png",
       "AssetKind": "All",

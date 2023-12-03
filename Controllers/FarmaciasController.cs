@@ -61,7 +61,7 @@ public class FarmaciasController : Controller
 
         HttpContext.Session.SetInt32("UserId", farmaciaId);
 
-        return RedirectToAction("Index");
+        return RedirectToAction("IndexF", "Produtos");
     }
 
     [HttpPost]
