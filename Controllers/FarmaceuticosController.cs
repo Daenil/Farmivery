@@ -11,7 +11,9 @@ public class FarmaceuticosController : Controller
 
     public ActionResult Index()
     {
-        List<Farmaceuticos> lista = data.Read();
+        int idFarmacia = GetFarmaciaIdFromSession();
+
+        List<Farmaceuticos> lista = data.ReadByFarmaciaId(idFarmacia);
         return View(lista);
     }
 
@@ -31,10 +33,20 @@ public class FarmaceuticosController : Controller
     }
 
     [HttpPost]
-    public ActionResult Create(Farmaceuticos farmaceuticos)
+    public ActionResult Create(Farmaceuticos model)
     {
-        data.Create(farmaceuticos);
-        return RedirectToAction("Index");
+        int idFarmacia = GetFarmaciaIdFromSession();
+        
+        model.idFarmacia = idFarmacia;
+
+        data.Create(model);
+
+        return RedirectToAction("Index", "Farmaceuticos");
+    }
+
+    private int GetFarmaciaIdFromSession()
+    {
+        return HttpContext.Session.GetInt32("UserId") ?? 0;
     }
 
     public ActionResult Delete(int id)

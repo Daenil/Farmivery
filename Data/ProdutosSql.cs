@@ -1,5 +1,6 @@
 using System.ComponentModel.Design;
 using System.Data.SqlTypes;
+using System.Reflection;
 using Microsoft.Data.SqlClient;
 
 public class ProdutosSql : Database, IProdutosData
@@ -8,8 +9,9 @@ public class ProdutosSql : Database, IProdutosData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "INSERT INTO Produtos VALUES (@nome, @descricao, @preco, @prod_qtd, @imagem)";
+        cmd.CommandText = "INSERT INTO Produtos VALUES (@farmaciaId, @nome, @descricao, @preco, @prod_qtd, @imagem)";
 
+        cmd.Parameters.AddWithValue("@farmaciaId", produto.idFarmacia);
         cmd.Parameters.AddWithValue("@nome", produto.Nome);
         cmd.Parameters.AddWithValue("@descricao", produto.Descricao);
         cmd.Parameters.AddWithValue("@preco", produto.Preco);
@@ -34,21 +36,25 @@ public class ProdutosSql : Database, IProdutosData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "SELECT * FROM Produtos";
+        cmd.CommandText = "SELECT P.*, F.Nome AS NomeFarmacia FROM Produtos P INNER JOIN Farmacias F ON P.IdFarmacia = F.FarmaciaId";
 
         SqlDataReader reader = cmd.ExecuteReader();
 
-        List<Produtos> listap = new();
+        List<Produtos> listap = new List<Produtos>();
 
-        while(reader.Read())
+        while (reader.Read())
         {
             Produtos produto = new Produtos();
             produto.ProdutoId = reader.GetInt32(0);
-            produto.Nome = reader.GetString(1);
-            produto.Descricao = reader.GetString(2);
-            produto.Preco = reader.GetDecimal(3);
-            produto.ProdQtd = reader.GetInt32(4);
-            produto.FileName = reader.GetString(5);
+            produto.idFarmacia = reader.GetInt32(1);
+            produto.Nome = reader.GetString(2);
+            produto.Descricao = reader.GetString(3);
+            produto.Preco = reader.GetDecimal(4);
+            produto.ProdQtd = reader.GetInt32(5);
+            produto.FileName = reader.GetString(6);
+
+            produto.NomeFarmacia = reader.GetString(7);
+
 
             listap.Add(produto);
         }
@@ -71,11 +77,12 @@ public class ProdutosSql : Database, IProdutosData
         {
             Produtos produto = new Produtos();
             produto.ProdutoId = reader.GetInt32(0);
-            produto.Nome = reader.GetString(1);
-            produto.Descricao = reader.GetString(2);
-            produto.Preco = reader.GetDecimal(3);
-            produto.ProdQtd = reader.GetInt32(4);
-            produto.FileName = reader.GetString(5);
+            produto.idFarmacia = reader.GetInt32(1);
+            produto.Nome = reader.GetString(2);
+            produto.Descricao = reader.GetString(3);
+            produto.Preco = reader.GetDecimal(4);
+            produto.ProdQtd = reader.GetInt32(5);
+            produto.FileName = reader.GetString(6);
 
             listap.Add(produto);
         }
@@ -96,17 +103,49 @@ public class ProdutosSql : Database, IProdutosData
         {
             Produtos produto = new Produtos();
             produto.ProdutoId = reader.GetInt32(0);
-            produto.Nome = reader.GetString(1);
-            produto.Descricao = reader.GetString(2);
-            produto.Preco = reader.GetDecimal(3);
-            produto.ProdQtd = reader.GetInt32(4);
-            produto.FileName = reader.GetString(5);
+            produto.idFarmacia = reader.GetInt32(1);
+            produto.Nome = reader.GetString(2);
+            produto.Descricao = reader.GetString(3);
+            produto.Preco = reader.GetDecimal(4);
+            produto.ProdQtd = reader.GetInt32(5);
+            produto.FileName = reader.GetString(6);
 
             return produto;
         }
 
         return null;
     }
+
+    public List<Produtos> ReadByFarmaciaId(int farmaciaId)
+    {
+        SqlCommand cmd = new SqlCommand();
+        cmd.Connection = connection;
+        cmd.CommandText = "SELECT P.*, F.Nome AS NomeFarmacia FROM Produtos P INNER JOIN Farmacias F ON P.IdFarmacia = F.FarmaciaId WHERE P.IdFarmacia = @farmaciaId";
+
+        cmd.Parameters.AddWithValue("@farmaciaId", farmaciaId);
+
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        List<Produtos> listap = new List<Produtos>();
+
+        while (reader.Read())
+        {
+            Produtos produto = new Produtos();
+            produto.ProdutoId = reader.GetInt32(0);
+            produto.idFarmacia = reader.GetInt32(1);
+            produto.Nome = reader.GetString(2);
+            produto.Descricao = reader.GetString(3);
+            produto.Preco = reader.GetDecimal(4);
+            produto.ProdQtd = reader.GetInt32(5);
+            produto.FileName = reader.GetString(6);
+
+            produto.NomeFarmacia = reader.GetString(7);
+
+            listap.Add(produto);
+        }
+        return listap;
+    }
+
 
     public void Update(int id, Produtos produtos)
     {

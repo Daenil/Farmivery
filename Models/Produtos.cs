@@ -1,6 +1,7 @@
 public class Produtos
 {
     public int ProdutoId { get; set; }
+    public int idFarmacia { get; set; }
     public string Nome { get; set; }
     public string Descricao { get; set; }
     public decimal Preco { get; set; }
@@ -8,4 +9,5 @@ public class Produtos
     public IFormFile Image { get; set; }
     public string? FilePath { get; set; }
     public string? FileName { get; set; }
+    public string NomeFarmacia { get; set; }
 }

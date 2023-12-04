@@ -1,4 +1,4 @@
-@{Layout = "/Views/Shared/NaoLogado.cshtml";}
+@{ Layout = "/Views/Shared/NaoLogado.cshtml"; }
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,21 +13,37 @@
 <body class="container">
 
     <div class="d-grid gap-3">
-        <form action="/farmacias/index">
-            <button class="btn btn-primary" type="submit">Farmacia index</button>
-        </form>
-        <form action="/produtos/indexc">
-            <button class="btn btn-primary" type="submit">Produtos próximos</button>
-        </form>
         <form action="/farmacias/Login">
-            <button class="btn btn-primary" type="submit">Farmacias</button>
+            <button class="btn btn-primary" type="submit">Entrar como Farmácia</button>
         </form>
         <form action="/clientes/Login">
-            <button class="btn btn-primary" type="submit">Clientes</button>
+            <button class="btn btn-primary" type="submit">Entrar como Cliente</button>
         </form>
     </div>
 
-    @* <a href="/pessoas/logout" class="btn btn-danger">Sair</a> *@
+    <!-- Exibição de Produtos -->
+    <div class="mt-4">
+        <h3>Produtos em Destaque</h3>
+
+        <!-- Adicione aqui o código para exibir os produtos -->
+        <div class="row">
+            @foreach (var produto in Model)
+            {
+                <div class="col-md-4 mb-3">
+                    <div class="card">
+                        <img src="/uploads/@produto.FileName" class="card-img-top" alt="@produto.Nome" style="height: 200px; object-fit: cover;">
+                        <div class="card-body">
+                            <h5 class="card-title">@produto.Nome</h5>
+                            <p class="card-text">@produto.Descricao</p>
+                            <p class="card-text">Preço: @produto.Preco</p>
+                            <a href="/clientes/Login" class="btn btn-success">Comprar</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
 </body>
 
 </html>

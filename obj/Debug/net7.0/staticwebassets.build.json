@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "mnLHsKLDLelxI6ioPyzH01IPzB5kd/salOf44IXWGUs=",
+  "Hash": "GUDAI69RZVD5mF2z+Ql1lr8GCBT6ERJgfEhhLyJG3ik=",
   "Source": "Farmivery",
   "BasePath": "_content/Farmivery",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\download.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\Fraldas.webp",
+      "SourceId": "Farmivery",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "BasePath": "_content/Farmivery",
+      "RelativePath": "uploads/Fraldas.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\Fraldas.webp"
     },
     {
       "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\i450431.jpeg",

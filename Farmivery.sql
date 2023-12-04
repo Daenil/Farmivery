@@ -7,6 +7,7 @@ go
 --use master
 
 select * from Produtos
+SELECT * FROM Clientes C WHERE C.clienteId = 
 
 ----------------------------------------------------------------------------
 -- Usando database 
@@ -17,15 +18,6 @@ go
 ----------------------------------------------------------------------------
 -- Criando tabelas
 ----------------------------------------------------------------------------
---Tabela Pessoas
-
---Tabela Farmac�utico
-create table Farmaceuticos
-(
-	farmaceuticoId		int				not null	primary key		identity,
-	nomeFarmaceutico	varchar(100)	not null,
-	telefone			varchar(20)		not null,
-)
 
 --Tabela Farmacias
 create table Farmacias
@@ -57,10 +49,22 @@ create table Clientes
 	estado			varchar(30)		not null
 )
 
+
+--Tabela Farmac�utico
+create table Farmaceuticos
+(
+	farmaceuticoId		int				not null	primary key		identity,
+	idFarmacia			int				not null	references		Farmacias(FarmaciaId),
+	nomeFarmaceutico	varchar(100)	not null,
+	telefone			varchar(20)		not null,
+)
+
+
 --Tabela Produtos
 create table Produtos
 (
 	produtoId		int				not null	primary key		identity,
+	idFarmacia		int				not null	references		Farmacias(FarmaciaId),
 	nome			varchar(50)		not null,
 	descricao		varchar(50)		not null,
 	preco			decimal(10,2)	not null,
@@ -68,24 +72,15 @@ create table Produtos
 	imagem			varchar(255)	not null
 )
 
---Tabela Pedidos
-create table Pedidos
-(
-	pedidoId INT NOT NULL primary key IDENTITY,
-	ped_data DATETIME,
-	ped_valor DECIMAL(10, 2) CHECK (ped_valor > 0),
-	status INT NULL CHECK (status IN (1, 2, 3)),
-	idCli int not null references Clientes(clienteId),
-)
 
 --Tabela Entregadores
 create table Entregadores
 (
 	entregadorId	int					not null		primary key		identity,
+	idFarmacia		int					not null		references		Farmacias(FarmaciaId),
 	nomeEntregador	varchar(100)		not null,
 	telefone		varchar(20)			not null
 )
-
 
 
 -- Procedure para Baixar o Estoque sempre que um produto for comprado

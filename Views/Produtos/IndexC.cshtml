@@ -2,10 +2,6 @@
 
 @{ Layout = "/Views/Shared/LayoutC.cshtml"; }
 
-<div class="col-md-6">
-    <a href="/home/index" class="btn btn-primary">Página Inicial</a>
-</div>
-
 <br/>
 
 <form action="/produtos/search" method="POST" class="input-group mb-3">
@@ -21,6 +17,7 @@
                 <img src="/uploads/@produto.FileName" class="card-img-top" alt="@produto.Nome" style="height: 300px; object-fit: cover;">
                 <div class="card-body">
                     <h5 class="card-title">@produto.Nome</h5>
+                    <p class="card-text">@produto.NomeFarmacia</p>
                     <p class="card-text">@produto.Descricao</p>
                     <p class="card-text">Preço: @produto.Preco</p>
                     <p class="card-text">Quantidade: @produto.ProdQtd</p>
@@ -35,4 +32,3 @@
         </div>
     }
 </div>
-

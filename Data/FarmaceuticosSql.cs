@@ -8,8 +8,9 @@ public class FarmaceuticosSql : Database, IFarmaceuticosData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "INSERT INTO Farmaceuticos VALUES (@nome, @telefone)";
+        cmd.CommandText = "INSERT INTO Farmaceuticos VALUES (@farmaciaid, @nome, @telefone)";
 
+        cmd.Parameters.AddWithValue("@farmaciaId", farmaceuticos.idFarmacia);
         cmd.Parameters.AddWithValue("@nome", farmaceuticos.NomeFarmaceutico);
         cmd.Parameters.AddWithValue("@telefone", farmaceuticos.Telefone);
 
@@ -31,7 +32,7 @@ public class FarmaceuticosSql : Database, IFarmaceuticosData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "SELECT * FROM Farmaceuticos";
+        cmd.CommandText = "SELECT Fa.*, F.nome AS NomeFarmac FROM Farmaceuticos Fa INNER JOIN Farmacias F ON Fa.IdFarmacia = F.FarmaciaId";
 
         SqlDataReader reader = cmd.ExecuteReader();
 
@@ -41,8 +42,38 @@ public class FarmaceuticosSql : Database, IFarmaceuticosData
         {
             Farmaceuticos farmaceuticos = new Farmaceuticos();
             farmaceuticos.FarmaceuticosId = reader.GetInt32(0);
-            farmaceuticos.NomeFarmaceutico = reader.GetString(1);
-            farmaceuticos.Telefone = reader.GetString(2);            
+            farmaceuticos.idFarmacia = reader.GetInt32(1);
+            farmaceuticos.NomeFarmaceutico = reader.GetString(2);
+            farmaceuticos.Telefone = reader.GetString(3); 
+
+            farmaceuticos.NomeFarmacia = reader.GetString(4);           
+
+            lista.Add(farmaceuticos);
+        }
+        return lista;
+    }
+
+    public List<Farmaceuticos> ReadByFarmaciaId(int idFarmacia)
+    {
+        SqlCommand cmd = new SqlCommand();
+        cmd.Connection = connection;
+        cmd.CommandText = "SELECT Fa.*, F.nome AS NomeFarmac FROM Farmaceuticos Fa INNER JOIN Farmacias F ON Fa.IdFarmacia = F.FarmaciaId WHERE Fa.IdFarmacia = @farmaciaId";
+
+        cmd.Parameters.AddWithValue("@farmaciaId", idFarmacia);
+
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        List<Farmaceuticos> lista = new();
+
+        while(reader.Read())
+        {
+            Farmaceuticos farmaceuticos = new Farmaceuticos();
+            farmaceuticos.FarmaceuticosId = reader.GetInt32(0);
+            farmaceuticos.idFarmacia = reader.GetInt32(1);
+            farmaceuticos.NomeFarmaceutico = reader.GetString(2);
+            farmaceuticos.Telefone = reader.GetString(3); 
+
+            farmaceuticos.NomeFarmacia = reader.GetString(4);           
 
             lista.Add(farmaceuticos);
         }
@@ -65,8 +96,9 @@ public class FarmaceuticosSql : Database, IFarmaceuticosData
         {
             Farmaceuticos farmaceuticos = new Farmaceuticos();
             farmaceuticos.FarmaceuticosId = reader.GetInt32(0);
-            farmaceuticos.NomeFarmaceutico = reader.GetString(1);
-            farmaceuticos.Telefone = reader.GetString(2);
+            farmaceuticos.idFarmacia = reader.GetInt32(1);
+            farmaceuticos.NomeFarmaceutico = reader.GetString(2);
+            farmaceuticos.Telefone = reader.GetString(3);   
 
             lista.Add(farmaceuticos);
         }
@@ -87,8 +119,9 @@ public class FarmaceuticosSql : Database, IFarmaceuticosData
         {
             Farmaceuticos farmaceuticos = new Farmaceuticos();
             farmaceuticos.FarmaceuticosId = reader.GetInt32(0);
-            farmaceuticos.NomeFarmaceutico = reader.GetString(1);
-            farmaceuticos.Telefone = reader.GetString(2);
+            farmaceuticos.idFarmacia = reader.GetInt32(1);
+            farmaceuticos.NomeFarmaceutico = reader.GetString(2);
+            farmaceuticos.Telefone = reader.GetString(3);   
 
             return farmaceuticos;
         }

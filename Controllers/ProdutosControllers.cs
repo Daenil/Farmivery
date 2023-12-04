@@ -13,7 +13,8 @@ public class ProdutosController : Controller
 
     public ActionResult IndexF()
     {
-        List<Produtos> listap = data.Read();
+        int farmaciaId = GetFarmaciaIdFromSession();
+        List<Produtos> listap = data.ReadByFarmaciaId(farmaciaId);
         return View("IndexF", listap);
     }
 
@@ -38,9 +39,18 @@ public class ProdutosController : Controller
         return View();
     }
 
+    private int GetFarmaciaIdFromSession()
+    {
+        return HttpContext.Session.GetInt32("UserId") ?? 0;
+    }
+    
     [HttpPost]
     public ActionResult Create(Produtos model)
     {
+        int idFarmacia = GetFarmaciaIdFromSession();
+        
+        model.idFarmacia = idFarmacia;
+
         if (model.Image != null && model.Image.Length > 0)
         {
             model.FileName = Path.GetFileName(model.Image.FileName);
@@ -114,13 +124,13 @@ public class ProdutosController : Controller
 
     public ActionResult CompraSucedida(int produtoId)
     {
-    Produtos produto = data.Read(produtoId);
+        Produtos produto = data.Read(produtoId);
 
-    if (produto == null)
-    {
-        return RedirectToAction("Index");
-    }
+        if (produto == null)
+        {
+            return RedirectToAction("Index");
+        }
 
-    return View(produto);
+        return View(produto);
     }
 }

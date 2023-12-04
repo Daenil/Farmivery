@@ -11,7 +11,9 @@ public class EntregadoresController : Controller
 
     public ActionResult Index()
     {
-        List<Entregadores> lista = data.Read();
+        int idFarmacia = GetFarmaciaIdFromSession();
+
+        List<Entregadores> lista = data.ReadByFarmaciaId(idFarmacia);
         return View(lista);
     }
 
@@ -31,10 +33,20 @@ public class EntregadoresController : Controller
     }
 
     [HttpPost]
-    public ActionResult Create(Entregadores entregadores)
+    public ActionResult Create(Entregadores model)
     {
-        data.Create(entregadores);
-        return RedirectToAction("Index");
+        int idFarmacia = GetFarmaciaIdFromSession();
+
+        model.idFarmacia = idFarmacia;
+
+        data.Create(model);
+
+        return RedirectToAction("Index", "Entregadores");
+    }
+
+    private int GetFarmaciaIdFromSession()
+    {
+        return HttpContext.Session.GetInt32("UserId") ?? 0;
     }
 
     public ActionResult Delete(int id)

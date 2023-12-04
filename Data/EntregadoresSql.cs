@@ -8,8 +8,9 @@ public class EntregadoresSql : Database, IEntregadoresData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "INSERT INTO Entregadores VALUES (@nome, @telefone)";
+        cmd.CommandText = "INSERT INTO Entregadores VALUES (@farmaciaid, @nome, @telefone)";
 
+        cmd.Parameters.AddWithValue("@farmaciaid", entregadores.idFarmacia);
         cmd.Parameters.AddWithValue("@nome", entregadores.NomeEntregador);
         cmd.Parameters.AddWithValue("@telefone", entregadores.Telefone);
 
@@ -31,7 +32,7 @@ public class EntregadoresSql : Database, IEntregadoresData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "SELECT * FROM Entregadores";
+        cmd.CommandText = "SELECT E.*, F.Nome AS NomeFarmacia FROM Entregadores E INNER JOIN Farmacias F ON E.IdFarmacia = F.FarmaciaId";
 
         SqlDataReader reader = cmd.ExecuteReader();
 
@@ -41,8 +42,37 @@ public class EntregadoresSql : Database, IEntregadoresData
         {
             Entregadores entregadores = new Entregadores();
             entregadores.EntregadorId = reader.GetInt32(0);
-            entregadores.NomeEntregador = reader.GetString(1);
-            entregadores.Telefone = reader.GetString(2);            
+            entregadores.idFarmacia = reader.GetInt32(1);
+            entregadores.NomeEntregador = reader.GetString(2);
+            entregadores.Telefone = reader.GetString(3);        
+            
+            entregadores.NomeFarmacia = reader.GetString(4);
+
+            lista.Add(entregadores);
+        }
+        return lista;
+    }
+
+    public List<Entregadores> ReadByFarmaciaId(int idFarmacia)
+    {
+        SqlCommand cmd = new SqlCommand();
+        cmd.Connection = connection;
+        cmd.CommandText = "SELECT E.*, F.Nome AS NomeFarmacia FROM Entregadores E INNER JOIN Farmacias F ON E.IdFarmacia = F.FarmaciaId WHERE E.IdFarmacia = @farmaciaId";
+
+        cmd.Parameters.AddWithValue("@farmaciaId", idFarmacia);
+
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        List<Entregadores> lista = new();
+
+        while(reader.Read())
+        {
+            Entregadores entregadores = new Entregadores();
+            entregadores.EntregadorId = reader.GetInt32(0);
+            entregadores.idFarmacia = reader.GetInt32(1);
+            entregadores.NomeEntregador = reader.GetString(2);
+            entregadores.Telefone = reader.GetString(3);
+            entregadores.NomeFarmacia = reader.GetString(4);
 
             lista.Add(entregadores);
         }
@@ -65,8 +95,9 @@ public class EntregadoresSql : Database, IEntregadoresData
         {
             Entregadores entregadores = new Entregadores();
             entregadores.EntregadorId = reader.GetInt32(0);
-            entregadores.NomeEntregador = reader.GetString(1);
-            entregadores.Telefone = reader.GetString(2);  
+            entregadores.idFarmacia = reader.GetInt32(1);
+            entregadores.NomeEntregador = reader.GetString(2);
+            entregadores.Telefone = reader.GetString(3);     
 
             lista.Add(entregadores);
         }
@@ -87,8 +118,9 @@ public class EntregadoresSql : Database, IEntregadoresData
         {
             Entregadores entregadores = new Entregadores();
             entregadores.EntregadorId = reader.GetInt32(0);
-            entregadores.NomeEntregador = reader.GetString(1);
-            entregadores.Telefone = reader.GetString(2);  
+            entregadores.idFarmacia = reader.GetInt32(1);
+            entregadores.NomeEntregador = reader.GetString(2);
+            entregadores.Telefone = reader.GetString(3);      
 
             return entregadores;
         }

@@ -5,33 +5,65 @@
 }
 
 <div class="container mt-4">
-    <h2>Perfil do Farmacia</h2>
+    <h2>Perfil da Farmácia</h2>
 
     <dl class="row mt-4">
-        <dt class="col-sm-3">Nome:</dt>
-        <dd class="col-sm-9">@Model.Nome</dd>
+        <div class="col-md-3">
+            <dt>Nome:</dt>
+        </div>
+        <div class="col-md-9">
+            <dd>@Model.Nome</dd>
+        </div>
 
-        <dt class="col-sm-3">E-mail:</dt>
-        <dd class="col-sm-9">@Model.Email</dd>
+        <div class="col-md-3">
+            <dt>E-mail:</dt>
+        </div>
+        <div class="col-md-9">
+            <dd>@Model.Email</dd>
+        </div>
 
-        <dt class="col-sm-3">Telefone:</dt>
-        <dd class="col-sm-9">@Model.Telefone</dd>
+        <div class="col-md-3">
+            <dt>Telefone:</dt>
+        </div>
+        <div class="col-md-9">
+            <dd>@Model.Telefone</dd>
+        </div>
 
-        <dt class="col-sm-3">CEP:</dt>
-        <dd class="col-sm-9">@Model.Cep</dd>
+        <div class="col-md-3">
+            <dt>CEP:</dt>
+        </div>
+        <div class="col-md-9">
+            <dd>@Model.Cep</dd>
+        </div>
 
-        <dt class="col-sm-3">Número da Casa:</dt>
-        <dd class="col-sm-9">@Model.NumeroRua</dd>
+        <div class="col-md-3">
+            <dt>Número da Casa:</dt>
+        </div>
+        <div class="col-md-9">
+            <dd>@Model.NumeroRua</dd>
+        </div>
 
-        <dt class="col-sm-3">Cidade:</dt>
-        <dd class="col-sm-9">@Model.Cidade</dd>
+        <div class="col-md-3">
+            <dt>Cidade:</dt>
+        </div>
+        <div class="col-md-9">
+            <dd>@Model.Cidade</dd>
+        </div>
 
-        <dt class="col-sm-3">Estado:</dt>
-        <dd class="col-sm-9">@Model.Estado</dd>
+        <div class="col-md-3">
+            <dt>Estado:</dt>
+        </div>
+        <div class="col-md-9">
+            <dd>@Model.Estado</dd>
+        </div>
     </dl>
-    <form method="post" action="/Farmacias/Logout">
-        <button type="submit" class="btn btn-primary">Logout</button>
+
+    <div class="mt-3">
+        <a href="/produtos/indexf" class="btn btn-secondary">Ver produtos</a>
+        <a href="/farmacias/update/@Model.FarmaciaId" class="btn btn-primary ms-2">Atualizar Perfil</a>
+    </div>
+
+    <form method="post" action="/Farmacias/Logout" class="mt-3">
+        <button type="submit" class="btn btn-danger">Sair</button>
     </form>
-
-
 </div>
