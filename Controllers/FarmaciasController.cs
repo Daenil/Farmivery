@@ -61,7 +61,7 @@ public class FarmaciasController : Controller
 
         HttpContext.Session.SetInt32("UserId", farmaciaId);
 
-        return RedirectToAction("Indexf", "Produtos");
+        return RedirectToAction("IndexF", "Produtos");
     }
 
     [HttpPost]
@@ -92,7 +92,7 @@ public class FarmaciasController : Controller
     public ActionResult Update(int id, Farmacias farmacias)
     {
         data.Update(id, farmacias);
-        return RedirectToAction("Perfil");
+        return RedirectToAction("Index");
     }
 
     public ActionResult Perfil()
