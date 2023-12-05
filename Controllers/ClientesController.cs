@@ -38,10 +38,15 @@ public class ClientesController : Controller
         return RedirectToAction("Login");
     }
 
-    public ActionResult Delete(int id)
+    public ActionResult Delete()
     {
+        int id = HttpContext.Session.GetInt32("UserId") ?? 0;
+
         data.Delete(id);
-        return RedirectToAction("Index");
+
+        HttpContext.Session.Clear();
+
+        return RedirectToAction("Login");
     }
 
     [HttpGet]
@@ -67,6 +72,7 @@ public class ClientesController : Controller
         int clienteId = cliente.ClienteId;
 
         HttpContext.Session.SetInt32("UserId", clienteId);
+        HttpContext.Session.SetString("TipoUser", "Cliente");
 
         return RedirectToAction("IndexC", "Produtos");
     }
@@ -84,7 +90,7 @@ public class ClientesController : Controller
         Clientes clientes = data.Read(id);
 
         if (clientes == null)
-            return RedirectToAction("Index");
+            return RedirectToAction("Perfil");
 
         return View(clientes);
     }
@@ -94,7 +100,7 @@ public class ClientesController : Controller
     {
         data.Update(id, clientes);
 
-        return RedirectToAction("Index");
+        return RedirectToAction("Perfil");
     }
 
     public ActionResult Perfil()
@@ -107,6 +113,10 @@ public class ClientesController : Controller
         int clienteId = HttpContext.Session.GetInt32("UserId") ?? 0;
 
         Clientes cliente = data.Read(clienteId);
+
+        List<Produtos> produtos = data.ReadProdutos(clienteId);
+
+        cliente.Produtos = produtos;
 
         if (cliente == null)
         {

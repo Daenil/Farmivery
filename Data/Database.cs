@@ -6,7 +6,9 @@ public abstract class Database : IDisposable
 
     public Database()
     {
-        connection = new SqlConnection("Data Source=localhost; Initial Catalog=Farmivery; Integrated Security=True; TrustServerCertificate=true;");
+        // connection = new SqlConnection("Data Source=localhost; Initial Catalog=Farmivery; Integrated Security=True; TrustServerCertificate=true;");
+        connection = new SqlConnection("Data Source=DRAUZIO\\DRAUZIO; Initial Catalog=Farmivery; Integrated Security=True; TrustServerCertificate=true;");
+
         connection.Open();
     }
 

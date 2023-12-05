@@ -36,7 +36,7 @@ public class ProdutosSql : Database, IProdutosData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "SELECT P.*, F.Nome AS NomeFarmacia FROM Produtos P INNER JOIN Farmacias F ON P.IdFarmacia = F.FarmaciaId";
+        cmd.CommandText = "SELECT P.*, F.Nome AS NomeFarmacia FROM Produtos P INNER JOIN Farmacias F ON P.IdFarmacia LIKE F.FarmaciaId";
 
         SqlDataReader reader = cmd.ExecuteReader();
 
@@ -61,11 +61,42 @@ public class ProdutosSql : Database, IProdutosData
         return listap;
     }
 
+    public List<Produtos> Read(string search, int farmaciaId)
+    {
+        SqlCommand cmd = new SqlCommand();
+        cmd.Connection = connection;
+        cmd.CommandText = "SELECT P.*, F.Nome AS NomeFarmacia FROM Produtos P INNER JOIN Farmacias F ON P.IdFarmacia LIKE F.FarmaciaId where P.Nome LIKE @nome and idFarmacia LIKE @idFarmacia";
+
+        cmd.Parameters.AddWithValue("@nome", "%" + search + "%");
+        cmd.Parameters.AddWithValue("@idFarmacia", farmaciaId);
+
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        List<Produtos> listap = new List<Produtos>();
+
+        while(reader.Read())
+        {
+            Produtos produto = new Produtos();
+            produto.ProdutoId = reader.GetInt32(0);
+            produto.idFarmacia = reader.GetInt32(1);
+            produto.Nome = reader.GetString(2);
+            produto.Descricao = reader.GetString(3);
+            produto.Preco = reader.GetDecimal(4);
+            produto.ProdQtd = reader.GetInt32(5);
+            produto.FileName = reader.GetString(6);
+
+            produto.NomeFarmacia = reader.GetString(7);
+
+            listap.Add(produto);
+        }
+        return listap;
+    }
+
     public List<Produtos> Read(string search)
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "SELECT * FROM Produtos WHERE Nome LIKE @nome";
+        cmd.CommandText = "SELECT P.*, F.Nome AS NomeFarmacia FROM Produtos P INNER JOIN Farmacias F ON P.IdFarmacia LIKE F.FarmaciaId where P.Nome LIKE @nome";
 
         cmd.Parameters.AddWithValue("@nome", "%" + search + "%");
 
@@ -84,6 +115,38 @@ public class ProdutosSql : Database, IProdutosData
             produto.ProdQtd = reader.GetInt32(5);
             produto.FileName = reader.GetString(6);
 
+            produto.NomeFarmacia = reader.GetString(7);
+
+            listap.Add(produto);
+        }
+        return listap;
+    }
+
+    public List<Produtos> ReadbyDesc(string search)
+    {
+        SqlCommand cmd = new SqlCommand();
+        cmd.Connection = connection;
+        cmd.CommandText = "SELECT P.*, F.Nome AS NomeFarmacia FROM Produtos P INNER JOIN Farmacias F ON P.IdFarmacia LIKE F.FarmaciaId where P.descricao LIKE @descricao";
+
+        cmd.Parameters.AddWithValue("@descricao", "%" + search + "%");
+
+        SqlDataReader reader = cmd.ExecuteReader();
+
+        List<Produtos> listap = new List<Produtos>();
+
+        while(reader.Read())
+        {
+            Produtos produto = new Produtos();
+            produto.ProdutoId = reader.GetInt32(0);
+            produto.idFarmacia = reader.GetInt32(1);
+            produto.Nome = reader.GetString(2);
+            produto.Descricao = reader.GetString(3);
+            produto.Preco = reader.GetDecimal(4);
+            produto.ProdQtd = reader.GetInt32(5);
+            produto.FileName = reader.GetString(6);
+
+            produto.NomeFarmacia = reader.GetString(7);
+
             listap.Add(produto);
         }
         return listap;
@@ -93,7 +156,7 @@ public class ProdutosSql : Database, IProdutosData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "SELECT * FROM Produtos WHERE ProdutoId = @id";
+        cmd.CommandText = "SELECT P.*, F.Nome AS NomeFarmacia FROM Produtos P INNER JOIN Farmacias F ON P.IdFarmacia LIKE F.FarmaciaId where P.produtoId LIKE @id";
 
         cmd.Parameters.AddWithValue("@id", id);
 
@@ -109,6 +172,8 @@ public class ProdutosSql : Database, IProdutosData
             produto.Preco = reader.GetDecimal(4);
             produto.ProdQtd = reader.GetInt32(5);
             produto.FileName = reader.GetString(6);
+
+            produto.NomeFarmacia = reader.GetString(7);
 
             return produto;
         }
@@ -145,7 +210,6 @@ public class ProdutosSql : Database, IProdutosData
         }
         return listap;
     }
-
 
     public void Update(int id, Produtos produtos)
     {

@@ -60,6 +60,7 @@ public class FarmaciasController : Controller
         int farmaciaId = farmacias.FarmaciaId;
 
         HttpContext.Session.SetInt32("UserId", farmaciaId);
+        HttpContext.Session.SetString("TipoUser", "Farmacia");        
 
         return RedirectToAction("IndexF", "Produtos");
     }
@@ -71,10 +72,15 @@ public class FarmaciasController : Controller
         return RedirectToAction("Index", "Home");
     }
 
-    public ActionResult Delete(int id)
+    public ActionResult Delete()
     {
+        int id = HttpContext.Session.GetInt32("UserId") ?? 0;
+
         data.Delete(id);
-        return RedirectToAction("Index");
+
+        HttpContext.Session.Clear();
+
+        return RedirectToAction("Login");
     }
 
     [HttpGet]
@@ -83,7 +89,7 @@ public class FarmaciasController : Controller
         Farmacias farmacias = data.Read(id);
 
         if (farmacias == null)
-            return RedirectToAction("Index");
+            return RedirectToAction("Perfil");
 
         return View(farmacias);
     }
@@ -92,7 +98,7 @@ public class FarmaciasController : Controller
     public ActionResult Update(int id, Farmacias farmacias)
     {
         data.Update(id, farmacias);
-        return RedirectToAction("Index");
+        return RedirectToAction("Perfil");
     }
 
     public ActionResult Perfil()

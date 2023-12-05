@@ -19,9 +19,12 @@ public class FarmaceuticosController : Controller
 
     public ActionResult Search(IFormCollection form)
     {
+        int farmaciaId = GetFarmaciaIdFromSession();
+
         string search = form["search"];
 
-        List<Farmaceuticos> lista = data.Read(search);
+        List<Farmaceuticos> lista = data.Read(search, farmaciaId);
+
         return View("index", lista);
     }
 
@@ -36,6 +39,11 @@ public class FarmaceuticosController : Controller
     public ActionResult Create(Farmaceuticos model)
     {
         int idFarmacia = GetFarmaciaIdFromSession();
+        
+        if (idFarmacia == 0)
+        {
+            return RedirectToAction("Login", "Farmacias");
+        }  
         
         model.idFarmacia = idFarmacia;
 

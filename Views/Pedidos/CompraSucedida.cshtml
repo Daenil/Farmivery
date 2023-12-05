@@ -1,0 +1,77 @@
+@model dynamic
+@{
+    Layout = "/Views/Shared/LayoutC.cshtml";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Compra Sucedida</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px;
+        }
+
+        h1 {
+            color: #28a745;
+        }
+
+        p {
+            color: #6c757d;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-secondary {
+            background-color: #007bff;
+            color: #ffffff;
+        }
+
+        .btn-secondary:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Obrigado, @Model.NomeCliente!</h1>
+        <p>Você receberá o seu produto, @Model.NomeProduto, em breve em @Model.Endereco.</p>
+
+        <p>Detalhes do Produto:</p>
+        <ul>
+            <li><img src="~/uploads/@Model.Imagem" alt="Imagem do Produto" /></li>
+            <li>Nome: @Model.NomeProduto</li>
+            <li>Preço: $@Model.PrecoProduto</li>
+        </ul>
+
+        <a href="/clientes/perfil" class="btn btn-secondary">Seu Perfil</a>
+        <a href="/produtos/indexc" class="btn btn-secondary">Ver mais produtos</a>
+    </div>
+</body>
+</html>

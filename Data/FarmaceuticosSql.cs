@@ -80,13 +80,14 @@ public class FarmaceuticosSql : Database, IFarmaceuticosData
         return lista;
     }
 
-    public List<Farmaceuticos> Read(string search)
+    public List<Farmaceuticos> Read(string search, int farmaciaId)
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "SELECT * FROM Farmaceuticos WHERE nomeFarmaceutico LIKE @nome";
+        cmd.CommandText = "SELECT Fa.*, F.Nome AS NomeFarmacia FROM Farmaceuticos Fa INNER JOIN Farmacias F ON Fa.IdFarmacia LIKE F.FarmaciaId where Fa.nomeFarmaceutico LIKE @nome and idFarmacia LIKE @idFarmacia";
 
         cmd.Parameters.AddWithValue("@nome", "%" + search + "%");
+        cmd.Parameters.AddWithValue("@idFarmacia", farmaciaId);
 
         SqlDataReader reader = cmd.ExecuteReader();
 
@@ -100,6 +101,9 @@ public class FarmaceuticosSql : Database, IFarmaceuticosData
             farmaceuticos.NomeFarmaceutico = reader.GetString(2);
             farmaceuticos.Telefone = reader.GetString(3);   
 
+            farmaceuticos.NomeFarmacia = reader.GetString(4);           
+
+
             lista.Add(farmaceuticos);
         }
         return lista;
@@ -109,7 +113,7 @@ public class FarmaceuticosSql : Database, IFarmaceuticosData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "SELECT * FROM Farmaceuticos WHERE farmaceuticoId = @id";
+        cmd.CommandText = "SELECT Fa.*, F.Nome AS NomeFarmacia FROM Farmaceuticos Fa INNER JOIN Farmacias F ON Fa.IdFarmacia LIKE F.FarmaciaId where Fa.FarmaceuticoId LIKE @id";
 
         cmd.Parameters.AddWithValue("@id", id);
 
@@ -122,6 +126,8 @@ public class FarmaceuticosSql : Database, IFarmaceuticosData
             farmaceuticos.idFarmacia = reader.GetInt32(1);
             farmaceuticos.NomeFarmaceutico = reader.GetString(2);
             farmaceuticos.Telefone = reader.GetString(3);   
+
+            farmaceuticos.NomeFarmacia = reader.GetString(4);           
 
             return farmaceuticos;
         }

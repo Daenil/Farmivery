@@ -21,28 +21,32 @@ public class ClientesSql : Database, IClientesData
 
         cmd.ExecuteNonQuery();
     }
+    
     public Clientes Login(string Email, string Senha)
     {
-        SqlCommand cmd = new SqlCommand();
-        cmd.Connection = connection;
-        cmd.CommandText = "SELECT clienteId, email, senha FROM Clientes WHERE email = @email AND senha = @senha";
-
-        cmd.Parameters.AddWithValue("@email", Email);
-        cmd.Parameters.AddWithValue("@senha", Senha);
-
-        SqlDataReader reader = cmd.ExecuteReader();
-
-        if (reader.Read())
+        using (SqlCommand cmd = new SqlCommand())
         {
-            Clientes cliente = new Clientes();
-            cliente.ClienteId = reader.GetInt32(0);
-            cliente.Email = reader.GetString(1);
-            cliente.Senha = reader.GetString(2);
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT clienteId, email, senha FROM Clientes WHERE email = @email AND senha = @senha";
 
-            return cliente;
+            cmd.Parameters.AddWithValue("@email", Email);
+            cmd.Parameters.AddWithValue("@senha", Senha);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    Clientes cliente = new Clientes();
+                    cliente.ClienteId = reader.GetInt32(0);
+                    cliente.Email = reader.GetString(1);
+                    cliente.Senha = reader.GetString(2);
+
+                    return cliente;
+                }
+            }
+
+            return null;
         }
-
-        return null;
     }
 
     public void Delete(int id)
@@ -58,117 +62,234 @@ public class ClientesSql : Database, IClientesData
 
     public List<Clientes> Read()
     {
-        SqlCommand cmd = new SqlCommand();
-        cmd.Connection = connection;
-        cmd.CommandText = "SELECT * FROM Clientes";
-
-        SqlDataReader reader = cmd.ExecuteReader();
-
-        List<Clientes> lista = new();
-
-        while(reader.Read())
+        using (SqlCommand cmd = new SqlCommand())
         {
-            Clientes clientes = new Clientes();
-            clientes.ClienteId = reader.GetInt32(0);
-            clientes.NomeCliente = reader.GetString(1);
-            clientes.Email = reader.GetString(2);
-            clientes.Senha = reader.GetString(3);
-            clientes.Telefone = reader.GetString(4);
-            clientes.Cep = reader.GetString(5);
-            clientes.NumeroCasa = reader.GetInt32(6);
-            clientes.Cidade = reader.GetString(7);
-            clientes.Estado = reader.GetString(8);
-            
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Clientes";
 
-            lista.Add(clientes);
+            List<Clientes> lista = new List<Clientes>();
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Clientes clientes = new Clientes();
+                    clientes.ClienteId = reader.GetInt32(0);
+                    clientes.NomeCliente = reader.GetString(1);
+                    clientes.Email = reader.GetString(2);
+                    clientes.Senha = reader.GetString(3);
+                    clientes.Telefone = reader.GetString(4);
+                    clientes.Cep = reader.GetString(5);
+                    clientes.NumeroCasa = reader.GetInt32(6);
+                    clientes.Cidade = reader.GetString(7);
+                    clientes.Estado = reader.GetString(8);
+
+                    lista.Add(clientes);
+                }
+            }
+
+            return lista;
         }
-        return lista;
     }
 
     public List<Clientes> Read(string search)
     {
-        SqlCommand cmd = new SqlCommand();
-        cmd.Connection = connection;
-        cmd.CommandText = "SELECT * FROM Clientes WHERE nomeCliente LIKE @nome";
-
-        cmd.Parameters.AddWithValue("@nome", "%" + search + "%");
-
-        SqlDataReader reader = cmd.ExecuteReader();
-
-        List<Clientes> lista = new List<Clientes>();
-
-        while(reader.Read())
+        using (SqlCommand cmd = new SqlCommand())
         {
-            Clientes clientes = new Clientes();
-            clientes.ClienteId = reader.GetInt32(0);
-            clientes.NomeCliente = reader.GetString(1);
-            clientes.Email = reader.GetString(2);
-            clientes.Senha = reader.GetString(3);
-            clientes.Telefone = reader.GetString(4);
-            clientes.Cep = reader.GetString(5);
-            clientes.NumeroCasa = reader.GetInt32(6);
-            clientes.Cidade = reader.GetString(7);
-            clientes.Estado = reader.GetString(8);
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Clientes WHERE nomeCliente LIKE @nome";
 
-            lista.Add(clientes);
+            cmd.Parameters.AddWithValue("@nome", "%" + search + "%");
+
+            List<Clientes> lista = new List<Clientes>();
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Clientes clientes = new Clientes();
+                    clientes.ClienteId = reader.GetInt32(0);
+                    clientes.NomeCliente = reader.GetString(1);
+                    clientes.Email = reader.GetString(2);
+                    clientes.Senha = reader.GetString(3);
+                    clientes.Telefone = reader.GetString(4);
+                    clientes.Cep = reader.GetString(5);
+                    clientes.NumeroCasa = reader.GetInt32(6);
+                    clientes.Cidade = reader.GetString(7);
+                    clientes.Estado = reader.GetString(8);
+
+                    lista.Add(clientes);
+                }
+            }
+
+            return lista;
         }
-        return lista;
     }
 
     public Clientes Read(int id)
     {
-        SqlCommand cmd = new SqlCommand();
-        cmd.Connection = connection;
-        cmd.CommandText = "SELECT * FROM Clientes WHERE clienteId = @id";
-
-        cmd.Parameters.AddWithValue("@id", id);
-
-        SqlDataReader reader = cmd.ExecuteReader();
-
-        if (reader.Read())
+        using (SqlCommand cmd = new SqlCommand())
         {
-            Clientes clientes = new Clientes();
-            clientes.ClienteId = reader.GetInt32(0);
-            clientes.NomeCliente = reader.GetString(1);
-            clientes.Email = reader.GetString(2);
-            clientes.Senha = reader.GetString(3);
-            clientes.Telefone = reader.GetString(4);
-            clientes.Cep = reader.GetString(5);
-            clientes.NumeroCasa = reader.GetInt32(6);
-            clientes.Cidade = reader.GetString(7);
-            clientes.Estado = reader.GetString(8);
+            cmd.Connection = connection;
+            cmd.CommandText = "SELECT * FROM Clientes WHERE clienteId = @id";
 
-            return clientes;
+            cmd.Parameters.AddWithValue("@id", id);
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                if (reader.Read())
+                {
+                    Clientes clientes = new Clientes();
+                    clientes.ClienteId = reader.GetInt32(0);
+                    clientes.NomeCliente = reader.GetString(1);
+                    clientes.Email = reader.GetString(2);
+                    clientes.Senha = reader.GetString(3);
+                    clientes.Telefone = reader.GetString(4);
+                    clientes.Cep = reader.GetString(5);
+                    clientes.NumeroCasa = reader.GetInt32(6);
+                    clientes.Cidade = reader.GetString(7);
+                    clientes.Estado = reader.GetString(8);
+
+                    return clientes;
+                }
+            }
+
+            return null;
         }
-
-        return null;
     }
 
     public void Update(int id, Clientes clientes)
     {
-        SqlCommand cmd = new SqlCommand();
-        cmd.Connection = connection;
-        cmd.CommandText = @"UPDATE Clientes
-                            SET nomeCliente = @nome,
-                            email = @email,
-                            senha = @senha,
-                            telefone = @telefone,
-                            cep = @cep,
-                            numeroCasa = @numerocasa,
-                            cidade = @cidade,
-                            estado = @estado
-                            WHERE clienteId = @id";
+        using (SqlCommand cmd = new SqlCommand())
+        {
+            cmd.Connection = connection;
+            cmd.CommandText = @"UPDATE Clientes
+                                SET nomeCliente = @nome,
+                                email = @email,
+                                senha = @senha,
+                                telefone = @telefone,
+                                cep = @cep,
+                                numeroCasa = @numerocasa,
+                                cidade = @cidade,
+                                estado = @estado
+                                WHERE clienteId = @id";
 
-        cmd.Parameters.AddWithValue("@nome", clientes.NomeCliente);
-        cmd.Parameters.AddWithValue("@email", clientes.Email);
-        cmd.Parameters.AddWithValue("@senha", clientes.Senha);
-        cmd.Parameters.AddWithValue("@telefone", clientes.Telefone);
-        cmd.Parameters.AddWithValue("@cep", clientes.Cep);
-        cmd.Parameters.AddWithValue("@numerocasa", clientes.NumeroCasa);
-        cmd.Parameters.AddWithValue("@cidade", clientes.Cidade);
-        cmd.Parameters.AddWithValue("@estado", clientes.Estado);
-        cmd.Parameters.AddWithValue("@id", id);
+            cmd.Parameters.AddWithValue("@nome", clientes.NomeCliente);
+            cmd.Parameters.AddWithValue("@email", clientes.Email);
+            cmd.Parameters.AddWithValue("@senha", clientes.Senha);
+            cmd.Parameters.AddWithValue("@telefone", clientes.Telefone);
+            cmd.Parameters.AddWithValue("@cep", clientes.Cep);
+            cmd.Parameters.AddWithValue("@numerocasa", clientes.NumeroCasa);
+            cmd.Parameters.AddWithValue("@cidade", clientes.Cidade);
+            cmd.Parameters.AddWithValue("@estado", clientes.Estado);
+            cmd.Parameters.AddWithValue("@id", id);
 
-        cmd.ExecuteNonQuery();
+            cmd.ExecuteNonQuery();
+        }
     }
+
+    // public List<Produtos> ReadProdutos(int clienteId)
+    // {
+    //     using (SqlCommand cmd = new SqlCommand())
+    //     {
+    //         cmd.Connection = connection;
+    //         cmd.CommandText = @"SELECT
+    //                             P.produtoId,
+    //                             P.nome AS NomeProduto,
+    //                             P.descricao AS DescricaoProduto,
+    //                             P.preco,
+    //                             SUM(PD.qtd) AS QuantidadeComprada,
+    //                             P.imagem AS ImagemProduto,
+    //                             F.nome AS NomeFarmacia
+    //                             FROM
+    //                             Pedidos PD
+    //                             INNER JOIN Produtos P ON PD.idProduto = P.produtoId
+    //                             INNER JOIN Farmacias F ON P.idFarmacia = F.farmaciaId
+    //                             WHERE
+    //                             PD.idCliente = @clienteId
+    //                             GROUP BY
+    //                             P.produtoId,
+    //                             P.nome,
+    //                             P.descricao,
+    //                             P.preco,
+    //                             P.imagem,
+    //                             F.nome;";
+
+    //         cmd.Parameters.AddWithValue("@clienteId", clienteId);
+
+    //         SqlDataReader reader = cmd.ExecuteReader();
+
+    //         List<Produtos> listap = new List<Produtos>();
+
+    //         while (reader.Read())
+    //         {
+    //             Produtos produto = new Produtos();
+    //             produto.ProdutoId = reader.GetInt32(0);
+    //             produto.Nome = reader.GetString(1);
+    //             produto.Descricao = reader.GetString(2);
+    //             produto.QtdComprada = reader.GetInt32(3);
+    //             produto.FileName = reader.GetString(4);
+
+    //             produto.NomeFarmacia = reader.GetString(5);
+
+
+    //             listap.Add(produto);
+    //         }
+    //         return listap;
+    //     }
+    // }
+
+    public List<Produtos> ReadProdutos(int clienteId)
+    {
+        using (SqlCommand cmd = new SqlCommand())
+        {
+            cmd.Connection = connection;
+            cmd.CommandText = @"SELECT
+                                P.produtoId,
+                                P.nome AS NomeProduto,
+                                P.descricao AS DescricaoProduto,
+                                P.preco,
+                                SUM(PD.qtd) AS QuantidadeComprada,
+                                P.imagem AS ImagemProduto,
+                                F.nome AS NomeFarmacia
+                                FROM
+                                Pedidos PD
+                                INNER JOIN Produtos P ON PD.idProduto = P.produtoId
+                                INNER JOIN Farmacias F ON P.idFarmacia = F.farmaciaId
+                                WHERE
+                                PD.idCliente = @clienteId
+                                GROUP BY
+                                P.produtoId,
+                                P.nome,
+                                P.descricao,
+                                P.preco,
+                                P.imagem,
+                                F.nome;";
+
+            cmd.Parameters.AddWithValue("@clienteId", clienteId);
+
+            List<Produtos> listap = new List<Produtos>();
+
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    Produtos produto = new Produtos();
+                    produto.ProdutoId = reader.GetInt32(0);
+                    produto.Nome = reader.GetString(1);
+                    produto.Descricao = reader.GetString(2);
+                    produto.Preco = reader.GetDecimal(3);
+                    produto.QtdComprada = reader.GetInt32(4);
+                    produto.FileName = reader.GetString(5);
+
+                    produto.NomeFarmacia = reader.GetString(6);
+
+                    listap.Add(produto);
+                }
+            }
+
+            return listap;
+        }
+    }
+
 }

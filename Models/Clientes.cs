@@ -9,4 +9,5 @@ public class Clientes
     public int NumeroCasa { get; set; }
     public string Cidade { get; set; }
     public string Estado { get; set; }
+    public List<Produtos> Produtos { get; set; }
 }

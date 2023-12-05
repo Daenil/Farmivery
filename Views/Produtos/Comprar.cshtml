@@ -29,8 +29,17 @@
                     <label for="quantidade" class="form-label">Quantidade:</label>
                     <input type="number" name="quantidade" class="form-control" value="1" required 
                            max="@Model.ProdQtd" />
-                    
                     <span asp-validation-for="quantidade" class="text-danger"></span>
+                </div>
+                
+                <div class="mb-3">
+                    <label for="tipoPagamento" class="form-label">Método de Pagamento:</label>
+                    <select name="tipoPagamento" class="form-control" required>
+                        <option value="1">Crédito</option>
+                        <option value="2">Pix</option>
+                        <option value="3">Pagar na entrega</option>
+                    </select>
+                    <span asp-validation-for="tipoPagamento" class="text-danger"></span>
                 </div>
                 
                 <button type="submit" class="btn btn-primary">Comprar</button>

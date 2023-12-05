@@ -10,4 +10,5 @@ public class Produtos
     public string? FilePath { get; set; }
     public string? FileName { get; set; }
     public string NomeFarmacia { get; set; }
+    public int? QtdComprada { get; set; }
 }

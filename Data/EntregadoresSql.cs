@@ -72,6 +72,7 @@ public class EntregadoresSql : Database, IEntregadoresData
             entregadores.idFarmacia = reader.GetInt32(1);
             entregadores.NomeEntregador = reader.GetString(2);
             entregadores.Telefone = reader.GetString(3);
+
             entregadores.NomeFarmacia = reader.GetString(4);
 
             lista.Add(entregadores);
@@ -79,13 +80,14 @@ public class EntregadoresSql : Database, IEntregadoresData
         return lista;
     }
 
-    public List<Entregadores> Read(string search)
+    public List<Entregadores> Read(string search, int farmaciaId)
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "SELECT * FROM Entregadores WHERE nomeEntregador LIKE @nome";
+        cmd.CommandText = "SELECT E.*, F.Nome AS NomeFarmacia FROM Entregadores E INNER JOIN Farmacias F ON E.IdFarmacia LIKE F.FarmaciaId where E.nomeEntregador LIKE @nome and idFarmacia LIKE @idFarmacia";
 
         cmd.Parameters.AddWithValue("@nome", "%" + search + "%");
+        cmd.Parameters.AddWithValue("@idFarmacia", farmaciaId);
 
         SqlDataReader reader = cmd.ExecuteReader();
 
@@ -99,6 +101,8 @@ public class EntregadoresSql : Database, IEntregadoresData
             entregadores.NomeEntregador = reader.GetString(2);
             entregadores.Telefone = reader.GetString(3);     
 
+            entregadores.NomeFarmacia = reader.GetString(4);
+
             lista.Add(entregadores);
         }
         return lista;
@@ -108,7 +112,7 @@ public class EntregadoresSql : Database, IEntregadoresData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "SELECT * FROM Entregadores WHERE entregadorId = @id";
+        cmd.CommandText = "SELECT E.*, F.Nome AS NomeFarmacia FROM Entregadores E INNER JOIN Farmacias F ON E.IdFarmacia LIKE F.FarmaciaId where E.EntregadorId LIKE @id";
 
         cmd.Parameters.AddWithValue("@id", id);
 

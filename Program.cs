@@ -9,6 +9,7 @@ builder.Services.AddTransient<IFarmaciasData, FarmaciasSql>();
 builder.Services.AddTransient<IFarmaceuticosData, FarmaceuticosSql>();
 builder.Services.AddTransient<IClientesData, ClientesSql>();
 builder.Services.AddTransient<IEntregadoresData, EntregadoresSql>();
+builder.Services.AddTransient<IPedidosData, PedidosSql>();
 builder.Services.AddTransient<IHomeData, HomeSql>();
 
 var app = builder.Build();

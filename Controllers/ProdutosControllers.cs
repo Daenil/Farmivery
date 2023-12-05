@@ -14,7 +14,11 @@ public class ProdutosController : Controller
     public ActionResult IndexF()
     {
         int farmaciaId = GetFarmaciaIdFromSession();
+        
         List<Produtos> listap = data.ReadByFarmaciaId(farmaciaId);
+
+        ViewBag.PesquisaDesc = false;
+
         return View("IndexF", listap);
     }
 
@@ -26,10 +30,42 @@ public class ProdutosController : Controller
 
     public ActionResult Search(IFormCollection form)
     {
-        string search = form["search"];
+        if (HttpContext.Session.GetString("TipoUser") == "Farmacia")
+        {
+            int farmaciaId = GetFarmaciaIdFromSession();
 
-        List<Produtos> listap = data.Read(search);
+            string search = form["search"];
+
+            List<Produtos> listap = data.Read(search, farmaciaId);
+
+            ViewBag.PesquisaDesc = false;
+
+            return View("indexF", listap);
+        }
+        else
+        {
+            string search = form["search"];
+
+            List<Produtos> listap = data.Read(search);
+
+            return View("IndexC", listap);
+        }
+    }
+
+    public ActionResult SearchDesc(IFormCollection form)
+    {
+        string search = form["searchdesc"];
+
+        List<Produtos> listap = data.ReadbyDesc(search);
+
+        ViewBag.PesquisaDesc = true;
+
         return View("indexF", listap);
+    }
+
+    private int GetFarmaciaIdFromSession()
+    {
+        return HttpContext.Session.GetInt32("UserId") ?? 0;
     }
 
     [HttpGet]
@@ -39,15 +75,15 @@ public class ProdutosController : Controller
         return View();
     }
 
-    private int GetFarmaciaIdFromSession()
-    {
-        return HttpContext.Session.GetInt32("UserId") ?? 0;
-    }
-    
     [HttpPost]
     public ActionResult Create(Produtos model)
     {
         int idFarmacia = GetFarmaciaIdFromSession();
+        
+        if (idFarmacia == 0)
+        {
+            return RedirectToAction("Login", "Farmacias");
+        }        
         
         model.idFarmacia = idFarmacia;
 
@@ -114,23 +150,34 @@ public class ProdutosController : Controller
         return View(produto);
     }
 
-    [HttpPost]
-    public ActionResult Comprar(int id, int quantidade)
+    private int GetClienteIdFromSession()
     {
-        data.Comprar(id, quantidade);
-
-        return RedirectToAction("CompraSucedida", new {produtoId = id});
+        return HttpContext.Session.GetInt32("UserId") ?? 0;
     }
 
-    public ActionResult CompraSucedida(int produtoId)
+    [HttpPost]
+    public ActionResult Comprar(int id, int quantidade, int IdCliente, int tipoPagamento)
     {
-        Produtos produto = data.Read(produtoId);
+        IdCliente = GetClienteIdFromSession();
 
-        if (produto == null)
+        if (IdCliente == 0)
         {
-            return RedirectToAction("Index");
+            return RedirectToAction("Login", "Clientes");
         }
+   
+        Pedidos pedido = new Pedidos
+        {
+            IdCliente = IdCliente,
+            IdProduto = id,
+            Qtd = quantidade,
+            TipoPagamento = tipoPagamento
+        };
 
-        return View(produto);
+        data.Comprar(id, quantidade);
+
+        PedidosSql pedidosSql = new PedidosSql();
+        pedidosSql.Pedido(pedido, tipoPagamento);
+
+        return RedirectToAction("CompraSucedida", "Pedidos", new {idProduto = id, IdCliente = IdCliente});
     }
 }

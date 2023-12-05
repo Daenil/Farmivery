@@ -14,14 +14,18 @@ public class EntregadoresController : Controller
         int idFarmacia = GetFarmaciaIdFromSession();
 
         List<Entregadores> lista = data.ReadByFarmaciaId(idFarmacia);
+
         return View(lista);
     }
 
     public ActionResult Search(IFormCollection form)
     {
+        int farmaciaId = GetFarmaciaIdFromSession();
+
         string search = form["search"];
 
-        List<Entregadores> lista = data.Read(search);
+        List<Entregadores> lista = data.Read(search, farmaciaId);
+        
         return View("index", lista);
     }
 
@@ -36,6 +40,11 @@ public class EntregadoresController : Controller
     public ActionResult Create(Entregadores model)
     {
         int idFarmacia = GetFarmaciaIdFromSession();
+
+        if (idFarmacia == 0)
+        {
+            return RedirectToAction("Login", "Farmacias");
+        }          
 
         model.idFarmacia = idFarmacia;
 
