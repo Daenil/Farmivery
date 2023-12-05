@@ -64,10 +64,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWFjaWFzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/danma/Farmivery/Views/Farmacias/Error.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWFjaWFzXEVycm9yLmNzaHRtbA==
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/danma/Farmivery/Views/Farmacias/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmFybWFjaWFzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -98,10 +94,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/danma/Farmivery/Views/Produtos/Comprar.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcQ29tcHJhci5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/danma/Farmivery/Views/Produtos/CompraSucedida.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUHJvZHV0b3NcQ29tcHJhU3VjZWRpZGEuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/danma/Farmivery/Views/Produtos/Create.cshtml]

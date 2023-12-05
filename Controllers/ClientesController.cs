@@ -44,9 +44,9 @@ public class ClientesController : Controller
 
         data.Delete(id);
 
-        HttpContext.Session.Clear();
-
         return RedirectToAction("Login");
+        
+        HttpContext.Session.Clear();
     }
 
     [HttpGet]
@@ -125,5 +125,20 @@ public class ClientesController : Controller
         }
 
         return View(cliente);
+    }
+
+    public string GetTipoPagamento(int tipoPagamento)
+    {
+        switch (tipoPagamento)
+        {
+            case 1:
+                return "Crédito";
+            case 2:
+                return "Pix";
+            case 3:
+                return "Pagar na entrega";
+            default:
+                return "Desconhecido";
+        }
     }
 }

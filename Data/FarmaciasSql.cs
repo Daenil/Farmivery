@@ -27,7 +27,10 @@ public class FarmaciasSql : Database, IFarmaciasData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "DELETE FROM Farmacias WHERE FarmaciaId = @id";
+        cmd.CommandText = @"DELETE FROM Farmaceuticos WHERE idFarmacia = @id
+                            DELETE FROM Entregadores WHERE idFarmacia = @id
+                            DELETE FROM Produtos WHERE idFarmacia = @id
+                            DELETE FROM Farmacias WHERE FarmaciaId = @id";
 
         cmd.Parameters.AddWithValue("@id", id);
 

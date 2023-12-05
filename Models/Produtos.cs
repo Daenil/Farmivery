@@ -11,4 +11,22 @@ public class Produtos
     public string? FileName { get; set; }
     public string NomeFarmacia { get; set; }
     public int? QtdComprada { get; set; }
+    public int? TipoPagamento { get; set; }
+    public string TipoPagamentoDescricao
+    {
+        get
+        {
+            switch (TipoPagamento)
+            {
+                case 1:
+                    return "Crédito";
+                case 2:
+                    return "Pix";
+                case 3:
+                    return "Pagar na entrega";
+                default:
+                    return "Desconhecido";
+            }
+        }
+    }
 }

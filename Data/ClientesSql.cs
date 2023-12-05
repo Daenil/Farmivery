@@ -53,7 +53,8 @@ public class ClientesSql : Database, IClientesData
     {
         SqlCommand cmd = new SqlCommand();
         cmd.Connection = connection;
-        cmd.CommandText = "DELETE FROM Clientes WHERE clienteId = @id";
+        cmd.CommandText = @"DELETE from Pedidos where idCliente = @id
+                            DELETE FROM Clientes WHERE clienteId = @id";
 
         cmd.Parameters.AddWithValue("@id", id);
 
@@ -188,57 +189,6 @@ public class ClientesSql : Database, IClientesData
         }
     }
 
-    // public List<Produtos> ReadProdutos(int clienteId)
-    // {
-    //     using (SqlCommand cmd = new SqlCommand())
-    //     {
-    //         cmd.Connection = connection;
-    //         cmd.CommandText = @"SELECT
-    //                             P.produtoId,
-    //                             P.nome AS NomeProduto,
-    //                             P.descricao AS DescricaoProduto,
-    //                             P.preco,
-    //                             SUM(PD.qtd) AS QuantidadeComprada,
-    //                             P.imagem AS ImagemProduto,
-    //                             F.nome AS NomeFarmacia
-    //                             FROM
-    //                             Pedidos PD
-    //                             INNER JOIN Produtos P ON PD.idProduto = P.produtoId
-    //                             INNER JOIN Farmacias F ON P.idFarmacia = F.farmaciaId
-    //                             WHERE
-    //                             PD.idCliente = @clienteId
-    //                             GROUP BY
-    //                             P.produtoId,
-    //                             P.nome,
-    //                             P.descricao,
-    //                             P.preco,
-    //                             P.imagem,
-    //                             F.nome;";
-
-    //         cmd.Parameters.AddWithValue("@clienteId", clienteId);
-
-    //         SqlDataReader reader = cmd.ExecuteReader();
-
-    //         List<Produtos> listap = new List<Produtos>();
-
-    //         while (reader.Read())
-    //         {
-    //             Produtos produto = new Produtos();
-    //             produto.ProdutoId = reader.GetInt32(0);
-    //             produto.Nome = reader.GetString(1);
-    //             produto.Descricao = reader.GetString(2);
-    //             produto.QtdComprada = reader.GetInt32(3);
-    //             produto.FileName = reader.GetString(4);
-
-    //             produto.NomeFarmacia = reader.GetString(5);
-
-
-    //             listap.Add(produto);
-    //         }
-    //         return listap;
-    //     }
-    // }
-
     public List<Produtos> ReadProdutos(int clienteId)
     {
         using (SqlCommand cmd = new SqlCommand())
@@ -251,7 +201,8 @@ public class ClientesSql : Database, IClientesData
                                 P.preco,
                                 SUM(PD.qtd) AS QuantidadeComprada,
                                 P.imagem AS ImagemProduto,
-                                F.nome AS NomeFarmacia
+                                F.nome AS NomeFarmacia,
+                                PD.tipoPagamento
                                 FROM
                                 Pedidos PD
                                 INNER JOIN Produtos P ON PD.idProduto = P.produtoId
@@ -264,7 +215,8 @@ public class ClientesSql : Database, IClientesData
                                 P.descricao,
                                 P.preco,
                                 P.imagem,
-                                F.nome;";
+                                F.nome,
+                                PD.tipoPagamento;";
 
             cmd.Parameters.AddWithValue("@clienteId", clienteId);
 
@@ -281,8 +233,8 @@ public class ClientesSql : Database, IClientesData
                     produto.Preco = reader.GetDecimal(3);
                     produto.QtdComprada = reader.GetInt32(4);
                     produto.FileName = reader.GetString(5);
-
                     produto.NomeFarmacia = reader.GetString(6);
+                    produto.TipoPagamento = reader.GetInt32(7);
 
                     listap.Add(produto);
                 }
