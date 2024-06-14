@@ -5,9 +5,7 @@ create database Farmivery
 go
 
 --use master
-
-select * from Clientes
-
+select * from Produtos
 
 ----------------------------------------------------------------------------
 -- Usando database 
