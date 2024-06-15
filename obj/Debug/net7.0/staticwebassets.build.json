@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DoWhb5NFTQFsjGyW9jKmVEdZigmsnEZnEo0mYnG+PYw=",
+  "Hash": "mrTRG/uCUf2EHuzIXWnKu0sm9kSoXi76ISC47w5tEOI=",
   "Source": "Farmivery",
   "BasePath": "_content/Farmivery",
   "Mode": "Default",
@@ -304,6 +304,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\uploads\\JoelNatal.gif"
+    },
+    {
+      "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\lacribell-colirio-1mg-3mg-15ml-latinofarma-7df.jpg",
+      "SourceId": "Farmivery",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\danma\\Farmivery\\wwwroot\\",
+      "BasePath": "_content/Farmivery",
+      "RelativePath": "uploads/lacribell-colirio-1mg-3mg-15ml-latinofarma-7df.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\uploads\\lacribell-colirio-1mg-3mg-15ml-latinofarma-7df.jpg"
     },
     {
       "Identity": "C:\\Users\\danma\\Farmivery\\wwwroot\\uploads\\moeda_brasil_1_real_2002_mbc_2513_1_6f83e65c9402121141f39d3b4f53067a.webp",
